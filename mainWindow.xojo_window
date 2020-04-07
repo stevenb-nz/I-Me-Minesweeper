@@ -103,6 +103,20 @@ End
 		End Sub
 	#tag EndEvent
 
+	#tag Event
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		  dim xlimit,ylimit as integer
+		  
+		  xlimit = floor(820/x)*x+10
+		  ylimit = floor(820/y)*y+10
+		  
+		  g.PenWidth = 10
+		  g.PenHeight = 10
+		  g.DrawRect(0,0,xlimit,ylimit)
+		  
+		End Sub
+	#tag EndEvent
+
 
 	#tag Property, Flags = &h0
 		mineField(-1,-1) As Boolean
