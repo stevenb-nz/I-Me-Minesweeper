@@ -94,6 +94,19 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Property, Flags = &h0
+		oneMinePer As Integer = 5
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		x As Integer = 15
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		y As Integer = 15
+	#tag EndProperty
+
+
 #tag EndWindowCode
 
 #tag ViewBehavior
