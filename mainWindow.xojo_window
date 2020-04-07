@@ -94,6 +94,16 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Event
+		Sub Open()
+		  'get settings from DB
+		  
+		  redim mineField(x,y)
+		  
+		End Sub
+	#tag EndEvent
+
+
 	#tag Property, Flags = &h0
 		mineField(-1,-1) As Boolean
 	#tag EndProperty
