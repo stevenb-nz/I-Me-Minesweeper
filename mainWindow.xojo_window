@@ -95,6 +95,10 @@ End
 
 #tag WindowCode
 	#tag Property, Flags = &h0
+		mineField(-1,-1) As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		oneMinePer As Integer = 5
 	#tag EndProperty
 
@@ -333,5 +337,23 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="oneMinePer"
+		Group="Behavior"
+		InitialValue="5"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="x"
+		Group="Behavior"
+		InitialValue="15"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="y"
+		Group="Behavior"
+		InitialValue="15"
+		Type="Integer"
 	#tag EndViewProperty
 #tag EndViewBehavior
