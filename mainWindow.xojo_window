@@ -1,5 +1,5 @@
 #tag Window
-Begin Window Window1
+Begin Window mainWindow
    BackColor       =   &cFFFFFF00
    Backdrop        =   0
    CloseButton     =   True
@@ -23,7 +23,7 @@ Begin Window Window1
    MinWidth        =   64
    Placement       =   0
    Resizeable      =   True
-   Title           =   "Untitled"
+   Title           =   "I Me Minesweeper"
    Visible         =   True
    Width           =   600
 End
