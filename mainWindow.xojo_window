@@ -114,6 +114,7 @@ End
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  dim i,j,xlimit,xsquare,ylimit,ysquare as integer
+		  dim points() As Double
 		  
 		  xsquare = floor(820/x)
 		  ysquare = floor(820/y)
@@ -133,17 +134,27 @@ End
 		    g.DrawLine(0,j*ysquare,xlimit-10,j*ysquare)
 		  next
 		  
-		  for i = 0 to x
-		    for j = 0 to y
+		  for i = 0 to x-1
+		    for j = 0 to y-1
 		      if mineField(i,j).cleared then
-		        
+		        'neighbours, if neighbours > 0
 		      else
 		        if mineField(i,j).flagged then
+		          g.ForeColor = Color.Red
+		          points = Array(0.0,i*xsquare+xsquare,j*ysquare+10,i*xsquare+10,j*ysquare+10,i*xsquare+10,j*ysquare+ysquare)
+		          g.FillPolygon(points)
 		        else
+		          g.ForeColor = Color.Orange
+		          points = Array(0.0,i*xsquare+xsquare,j*ysquare+10,i*xsquare+10,j*ysquare+10,i*xsquare+10,j*ysquare+ysquare)
+		          g.FillPolygon(points)
 		        end
+		        g.ForeColor = Color.Green
+		        points = Array(0.0,i*xsquare+xsquare,j*ysquare+10,i*xsquare+xsquare,j*ysquare+ysquare,i*xsquare+10,j*ysquare+ysquare)
+		        g.FillPolygon(points)
 		      end
 		    next
 		  next
+		  
 		End Sub
 	#tag EndEvent
 
