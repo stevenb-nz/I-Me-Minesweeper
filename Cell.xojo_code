@@ -1,5 +1,16 @@
 #tag Class
 Protected Class Cell
+	#tag Method, Flags = &h0
+		Sub Constructor()
+		  cleared = false
+		  flagged = false
+		  mine = false
+		  neighbours = 0
+		  
+		End Sub
+	#tag EndMethod
+
+
 	#tag Property, Flags = &h0
 		cleared As Boolean
 	#tag EndProperty

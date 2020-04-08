@@ -96,9 +96,17 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Open()
+		  dim i,j as integer
+		  
 		  'get settings from DB
 		  
 		  redim mineField(x,y)
+		  
+		  for i = 0 to x
+		    for j = 0 to y
+		      mineField(i,j) = new Cell
+		    next
+		  next
 		  
 		End Sub
 	#tag EndEvent
@@ -127,7 +135,13 @@ End
 		  
 		  for i = 0 to x
 		    for j = 0 to y
-		      
+		      if mineField(i,j).cleared then
+		        
+		      else
+		        if mineField(i,j).flagged then
+		        else
+		        end
+		      end
 		    next
 		  next
 		End Sub
