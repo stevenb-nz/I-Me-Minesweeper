@@ -135,11 +135,11 @@ End
 
 
 	#tag Property, Flags = &h0
-		mineField(-1,-1) As Boolean
+		mineField(-1,-1) As Cell
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		oneMinePer As Integer = 5
+		mineRatio As Integer = 5
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -379,7 +379,7 @@ End
 		EditorType="Boolean"
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="oneMinePer"
+		Name="mineRatio"
 		Group="Behavior"
 		InitialValue="5"
 		Type="Integer"
