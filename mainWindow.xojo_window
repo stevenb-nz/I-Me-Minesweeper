@@ -105,7 +105,7 @@ End
 
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
-		  dim i,xlimit,xsquare,ylimit,ysquare as integer
+		  dim i,j,xlimit,xsquare,ylimit,ysquare as integer
 		  
 		  xsquare = floor(820/x)
 		  ysquare = floor(820/y)
@@ -121,10 +121,15 @@ End
 		    g.DrawLine(i*xsquare,0,i*xsquare,ylimit-10)
 		  next
 		  
-		  for i = 1 to y
-		    g.DrawLine(0,i*ysquare,xlimit-10,i*ysquare)
+		  for j = 1 to y
+		    g.DrawLine(0,j*ysquare,xlimit-10,j*ysquare)
 		  next
 		  
+		  for i = 0 to x
+		    for j = 0 to y
+		      
+		    next
+		  next
 		End Sub
 	#tag EndEvent
 
