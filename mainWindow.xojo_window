@@ -100,10 +100,10 @@ End
 		  
 		  'get settings from DB
 		  
-		  redim mineField(x,y)
+		  redim mineField(x+1,y+1)
 		  
-		  for i = 0 to x
-		    for j = 0 to y
+		  for i = 0 to x+1
+		    for j = 0 to y+1
 		      mineField(i,j) = new Cell
 		    next
 		  next
@@ -134,22 +134,22 @@ End
 		    g.DrawLine(0,j*ysquare,xlimit-10,j*ysquare)
 		  next
 		  
-		  for i = 0 to x-1
-		    for j = 0 to y-1
+		  for i = 1 to x
+		    for j = 1 to y
 		      if mineField(i,j).cleared then
 		        'neighbours, if neighbours > 0
 		      else
 		        if mineField(i,j).flagged then
 		          g.ForeColor = Color.Red
-		          points = Array(0.0,i*xsquare+xsquare,j*ysquare+10,i*xsquare+10,j*ysquare+10,i*xsquare+10,j*ysquare+ysquare)
+		          points = Array(0.0,i*xsquare,(j-1)*ysquare+10,(i-1)*xsquare+10,(j-1)*ysquare+10,(i-1)*xsquare+10,j*ysquare)
 		          g.FillPolygon(points)
 		        else
 		          g.ForeColor = Color.Orange
-		          points = Array(0.0,i*xsquare+xsquare,j*ysquare+10,i*xsquare+10,j*ysquare+10,i*xsquare+10,j*ysquare+ysquare)
+		          points = Array(0.0,i*xsquare,(j-1)*ysquare+10,(i-1)*xsquare+10,(j-1)*ysquare+10,(i-1)*xsquare+10,j*ysquare)
 		          g.FillPolygon(points)
 		        end
 		        g.ForeColor = Color.Green
-		        points = Array(0.0,i*xsquare+xsquare,j*ysquare+10,i*xsquare+xsquare,j*ysquare+ysquare,i*xsquare+10,j*ysquare+ysquare)
+		        points = Array(0.0,i*xsquare,(j-1)*ysquare+10,i*xsquare,j*ysquare,(i-1)*xsquare+10,j*ysquare)
 		        g.FillPolygon(points)
 		      end
 		    next
