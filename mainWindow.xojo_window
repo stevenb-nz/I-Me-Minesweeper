@@ -96,13 +96,28 @@ End
 #tag WindowCode
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  dim goodClick as boolean
+		  dim goodClick,flagClick as boolean
+		  dim clickCellX,clickCellY,clickInCellX,clickInCellY as integer
 		  
 		  if activeGame then
 		    goodClick = true
 		    
-		    
-		    MsgBox str(x\xsquare)+","+str(y\ysquare)+" - "+str(x mod xsquare)+","+str(y mod ysquare)
+		    clickCellX = x\xsquare
+		    clickCellY = y\ysquare
+		    clickInCellX = x mod xsquare
+		    clickInCellY = y mod ysquare
+		    if x < 10 or y < 10 then
+		      goodClick = false
+		    end
+		    if x > xsquare*cols or y > ysquare*rows then
+		      goodClick = False
+		    end
+		    if clickInCellx < 10 or clickInCellY < 10 then
+		      goodClick = False
+		    end
+		    if goodClick then
+		      MsgBox "good click"
+		    end
 		  end
 		  
 		End Function
