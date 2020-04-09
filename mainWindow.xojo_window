@@ -95,15 +95,22 @@ End
 
 #tag WindowCode
 	#tag Event
+		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  MsgBox str(x)+" "+str(y)
+		  
+		End Function
+	#tag EndEvent
+
+	#tag Event
 		Sub Open()
 		  dim i,j as integer
 		  
 		  'get settings from DB
 		  
-		  redim mineField(x+1,y+1)
+		  redim mineField(cols+1,rows+1)
 		  
-		  for i = 0 to x+1
-		    for j = 0 to y+1
+		  for i = 0 to cols+1
+		    for j = 0 to rows+1
 		      mineField(i,j) = new Cell
 		    next
 		  next
@@ -116,26 +123,26 @@ End
 		  dim i,j,xlimit,xsquare,ylimit,ysquare as integer
 		  dim points() As Double
 		  
-		  xsquare = floor(820/x)
-		  ysquare = floor(820/y)
+		  xsquare = floor(820/cols)
+		  ysquare = floor(820/rows)
 		  
-		  xlimit = xsquare*x+10
-		  ylimit = ysquare*y+10
+		  xlimit = xsquare*cols+10
+		  ylimit = ysquare*rows+10
 		  
 		  g.PenWidth = 10
 		  g.PenHeight = 10
 		  g.DrawRect(0,0,xlimit,ylimit)
 		  
-		  for i = 1 to x
+		  for i = 1 to cols
 		    g.DrawLine(i*xsquare,0,i*xsquare,ylimit-10)
 		  next
 		  
-		  for j = 1 to y
+		  for j = 1 to rows
 		    g.DrawLine(0,j*ysquare,xlimit-10,j*ysquare)
 		  next
 		  
-		  for i = 1 to x
-		    for j = 1 to y
+		  for i = 1 to cols
+		    for j = 1 to rows
 		      if mineField(i,j).cleared then
 		        'neighbours, if neighbours > 0
 		      else
@@ -160,6 +167,10 @@ End
 
 
 	#tag Property, Flags = &h0
+		cols As Integer = 15
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		mineField(-1,-1) As Cell
 	#tag EndProperty
 
@@ -168,11 +179,7 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		x As Integer = 15
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		y As Integer = 15
+		rows As Integer = 15
 	#tag EndProperty
 
 
@@ -410,13 +417,13 @@ End
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="x"
+		Name="cols"
 		Group="Behavior"
 		InitialValue="15"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="y"
+		Name="rows"
 		Group="Behavior"
 		InitialValue="15"
 		Type="Integer"
