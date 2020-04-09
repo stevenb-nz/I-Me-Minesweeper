@@ -96,7 +96,7 @@ End
 #tag WindowCode
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  dim goodClick,flagClick as boolean
+		  dim goodClick as boolean
 		  dim clickCellX,clickCellY,clickInCellX,clickInCellY as integer
 		  
 		  if activeGame then
@@ -116,14 +116,21 @@ End
 		      goodClick = False
 		    end
 		    if goodClick then
-		      if clickInCellx+clickInCelly < 63 then
-		        flagClick = true
-		      else
-		        flagClick = false
+		      if mineField(clickCellX+1,clickCellY+1).cleared then
+		        goodClick = false
 		      end
-		      
+		    end
+		    if goodClick then
+		      if clickInCellx+clickInCelly < 63 then
+		        'flag click
+		        
+		      else
+		        'clear click
+		        
+		      end
 		    end
 		  end
+		  refresh
 		  
 		End Function
 	#tag EndEvent
