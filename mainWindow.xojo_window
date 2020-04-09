@@ -116,7 +116,12 @@ End
 		      goodClick = False
 		    end
 		    if goodClick then
-		      MsgBox "good click"
+		      if clickInCellx+clickInCelly < 63 then
+		        flagClick = true
+		      else
+		        flagClick = false
+		      end
+		      
 		    end
 		  end
 		  
