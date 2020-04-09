@@ -103,14 +103,20 @@ End
 
 	#tag Event
 		Sub Open()
-		  dim i,j as integer
+		  dim i,j,cp1,rp1 as integer
 		  
 		  'get settings from DB
 		  
-		  redim mineField(cols+1,rows+1)
+		  xsquare = floor((self.height-10)/cols)
+		  ysquare = floor((self.height-10)/rows)
 		  
-		  for i = 0 to cols+1
-		    for j = 0 to rows+1
+		  cp1 = cols+1
+		  rp1 = rows+1
+		  
+		  redim mineField(cp1,rp1)
+		  
+		  for i = 0 to cp1
+		    for j = 0 to rp1
 		      mineField(i,j) = new Cell
 		    next
 		  next
@@ -120,11 +126,8 @@ End
 
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
-		  dim i,j,xlimit,xsquare,ylimit,ysquare as integer
+		  dim i,j,xlimit,ylimit as integer
 		  dim points() As Double
-		  
-		  xsquare = floor(820/cols)
-		  ysquare = floor(820/rows)
 		  
 		  xlimit = xsquare*cols+10
 		  ylimit = ysquare*rows+10
@@ -180,6 +183,14 @@ End
 
 	#tag Property, Flags = &h0
 		rows As Integer = 15
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		xsquare As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		ysquare As Integer
 	#tag EndProperty
 
 
