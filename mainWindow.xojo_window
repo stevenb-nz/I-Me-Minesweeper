@@ -96,8 +96,13 @@ End
 #tag WindowCode
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
+		  dim goodClick as boolean
+		  
 		  if activeGame then
-		    MsgBox str(x)+" "+str(y)
+		    goodClick = true
+		    
+		    
+		    MsgBox str(x\xsquare)+","+str(y\ysquare)+" - "+str(x mod xsquare)+","+str(y mod ysquare)
 		  end
 		  
 		End Function
@@ -459,6 +464,22 @@ End
 		Name="rows"
 		Group="Behavior"
 		InitialValue="15"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="activeGame"
+		Group="Behavior"
+		InitialValue="false"
+		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="xsquare"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ysquare"
+		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
 #tag EndViewBehavior
