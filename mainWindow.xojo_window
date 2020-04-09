@@ -96,7 +96,9 @@ End
 #tag WindowCode
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
-		  MsgBox str(x)+" "+str(y)
+		  if activeGame then
+		    MsgBox str(x)+" "+str(y)
+		  end
 		  
 		End Function
 	#tag EndEvent
@@ -170,6 +172,10 @@ End
 
 
 	#tag Property, Flags = &h0
+		activeGame As Boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		cols As Integer = 15
 	#tag EndProperty
 
@@ -196,6 +202,22 @@ End
 
 #tag EndWindowCode
 
+#tag Events newButton
+	#tag Event
+		Sub Action()
+		  activeGame = true
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events settingsButton
+	#tag Event
+		Sub Action()
+		  activeGame = false
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Name"
