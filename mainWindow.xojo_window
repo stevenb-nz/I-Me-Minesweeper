@@ -122,8 +122,7 @@ End
 		    end
 		    if goodClick then
 		      if clickInCellx+clickInCelly < 63 then
-		        'flag click
-		        
+		        mineField(clickCellX+1,clickCellY+1).flagged = not mineField(clickCellX+1,clickCellY+1).flagged
 		      else
 		        'clear click
 		        
