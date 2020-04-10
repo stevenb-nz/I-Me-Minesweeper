@@ -121,11 +121,15 @@ End
 		      end
 		    end
 		    if goodClick then
-		      if clickInCellx+clickInCelly < 63 then
-		        mineField(clickCellX+1,clickCellY+1).flagged = not mineField(clickCellX+1,clickCellY+1).flagged
+		      if mineField(clickCellX+1,clickCellY+1).flagged then
+		        mineField(clickCellX+1,clickCellY+1).flagged = false
 		      else
-		        'clear click
-		        
+		        if clickInCellx+clickInCelly < 63 then
+		          mineField(clickCellX+1,clickCellY+1).flagged = true
+		        else
+		          'clear click
+		          
+		        end
 		      end
 		    end
 		  end
@@ -184,16 +188,16 @@ End
 		      else
 		        if mineField(i,j).flagged then
 		          g.ForeColor = Color.Red
-		          points = Array(0.0,i*xsquare,(j-1)*ysquare+10,(i-1)*xsquare+10,(j-1)*ysquare+10,(i-1)*xsquare+10,j*ysquare)
+		          points = Array(0.0,i*xsquare,(j-1)*ysquare+10,(i-1)*xsquare+10,(j-1)*ysquare+10,(i-1)*xsquare+10,j*ysquare,i*xsquare,j*ysquare)
 		          g.FillPolygon(points)
 		        else
 		          g.ForeColor = Color.Orange
 		          points = Array(0.0,i*xsquare,(j-1)*ysquare+10,(i-1)*xsquare+10,(j-1)*ysquare+10,(i-1)*xsquare+10,j*ysquare)
 		          g.FillPolygon(points)
+		          g.ForeColor = Color.Green
+		          points = Array(0.0,i*xsquare,(j-1)*ysquare+10,i*xsquare,j*ysquare,(i-1)*xsquare+10,j*ysquare)
+		          g.FillPolygon(points)
 		        end
-		        g.ForeColor = Color.Green
-		        points = Array(0.0,i*xsquare,(j-1)*ysquare+10,i*xsquare,j*ysquare,(i-1)*xsquare+10,j*ysquare)
-		        g.FillPolygon(points)
 		      end
 		    next
 		  next
