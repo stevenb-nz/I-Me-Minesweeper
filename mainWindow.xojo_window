@@ -127,8 +127,11 @@ End
 		        if clickInCellx+clickInCelly < 63 then
 		          mineField(clickCellX+1,clickCellY+1).flagged = true
 		        else
-		          'clear click
-		          
+		          if not activeGame then
+		            'set up new game field
+		            activeGame = true
+		          end
+		          'do clear click
 		        end
 		      end
 		    end
