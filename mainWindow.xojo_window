@@ -128,7 +128,7 @@ End
 		          mineField(clickCellX+1,clickCellY+1).flagged = true
 		        else
 		          if not activeGame then
-		            'set up new game field
+		            newGame(clickCellX,clickCellY)
 		            activeGame = true
 		          end
 		          'do clear click
@@ -190,7 +190,7 @@ End
 		        'neighbours, if neighbours > 0
 		      else
 		        if mineField(i,j).flagged then
-		          g.ForeColor = Color.Red
+		          g.ForeColor = Color.Orange
 		          points = Array(0.0,i*xsquare,(j-1)*ysquare+10,(i-1)*xsquare+10,(j-1)*ysquare+10,(i-1)*xsquare+10,j*ysquare,i*xsquare,j*ysquare)
 		          g.FillPolygon(points)
 		        else
@@ -207,6 +207,13 @@ End
 		  
 		End Sub
 	#tag EndEvent
+
+
+	#tag Method, Flags = &h0
+		Sub newGame(clickCellX As Integer, clickcellY As Integer)
+		  
+		End Sub
+	#tag EndMethod
 
 
 	#tag Property, Flags = &h0
