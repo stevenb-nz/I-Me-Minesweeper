@@ -131,7 +131,11 @@ End
 		            newGame(clickCellX,clickCellY)
 		            firstClick = false
 		          end
-		          'do clear click
+		          if mineField(clickCellX+1,clickCellY+1).mine then
+		            activeGame = false
+		          else
+		            
+		          end
 		        end
 		      end
 		    end
