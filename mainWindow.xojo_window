@@ -102,14 +102,14 @@ End
 		  if activeGame then
 		    goodClick = true
 		    
-		    clickCellX = x\xsquare
-		    clickCellY = y\ysquare
-		    clickInCellX = x mod xsquare
-		    clickInCellY = y mod ysquare
+		    clickCellX = x\xsquareSize
+		    clickCellY = y\ysquareSize
+		    clickInCellX = x mod xsquareSize
+		    clickInCellY = y mod ysquareSize
 		    if x < 10 or y < 10 then
 		      goodClick = false
 		    end
-		    if x > xsquare*cols or y > ysquare*rows then
+		    if x > xsquareSize*cols or y > ysquareSize*rows then
 		      goodClick = False
 		    end
 		    if clickInCellx < 10 or clickInCellY < 10 then
@@ -127,9 +127,9 @@ End
 		        if clickInCellx+clickInCelly < 63 then
 		          mineField(clickCellX+1,clickCellY+1).flagged = true
 		        else
-		          if not activeGame then
+		          if firstClick then
 		            newGame(clickCellX,clickCellY)
-		            activeGame = true
+		            firstClick = false
 		          end
 		          'do clear click
 		        end
@@ -147,8 +147,8 @@ End
 		  
 		  'get settings from DB
 		  
-		  xsquare = floor((self.height-10)/cols)
-		  ysquare = floor((self.height-10)/rows)
+		  xsquareSize = floor((self.height-10)/cols)
+		  ysquareSize = floor((self.height-10)/rows)
 		  
 		  cp1 = cols+1
 		  rp1 = rows+1
@@ -169,19 +169,19 @@ End
 		  dim i,j,xlimit,ylimit as integer
 		  dim points() As Double
 		  
-		  xlimit = xsquare*cols+10
-		  ylimit = ysquare*rows+10
+		  xlimit = xsquareSize*cols+10
+		  ylimit = ysquareSize*rows+10
 		  
 		  g.PenWidth = 10
 		  g.PenHeight = 10
 		  g.DrawRect(0,0,xlimit,ylimit)
 		  
 		  for i = 1 to cols
-		    g.DrawLine(i*xsquare,0,i*xsquare,ylimit-10)
+		    g.DrawLine(i*xsquareSize,0,i*xsquareSize,ylimit-10)
 		  next
 		  
 		  for j = 1 to rows
-		    g.DrawLine(0,j*ysquare,xlimit-10,j*ysquare)
+		    g.DrawLine(0,j*ysquareSize,xlimit-10,j*ysquareSize)
 		  next
 		  
 		  for i = 1 to cols
@@ -189,17 +189,23 @@ End
 		      if mineField(i,j).cleared then
 		        'neighbours, if neighbours > 0
 		      else
-		        if mineField(i,j).flagged then
-		          g.ForeColor = Color.Orange
-		          points = Array(0.0,i*xsquare,(j-1)*ysquare+10,(i-1)*xsquare+10,(j-1)*ysquare+10,(i-1)*xsquare+10,j*ysquare,i*xsquare,j*ysquare)
+		        if mineField(i,j).mine and not activeGame then
+		          g.ForeColor = Color.Red
+		          points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
 		          g.FillPolygon(points)
 		        else
-		          g.ForeColor = Color.Orange
-		          points = Array(0.0,i*xsquare,(j-1)*ysquare+10,(i-1)*xsquare+10,(j-1)*ysquare+10,(i-1)*xsquare+10,j*ysquare)
-		          g.FillPolygon(points)
-		          g.ForeColor = Color.Green
-		          points = Array(0.0,i*xsquare,(j-1)*ysquare+10,i*xsquare,j*ysquare,(i-1)*xsquare+10,j*ysquare)
-		          g.FillPolygon(points)
+		          if mineField(i,j).flagged then
+		            g.ForeColor = Color.Orange
+		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
+		            g.FillPolygon(points)
+		          else
+		            g.ForeColor = Color.Orange
+		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize)
+		            g.FillPolygon(points)
+		            g.ForeColor = Color.Green
+		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,i*xsquareSize,j*ysquareSize,(i-1)*xsquareSize+10,j*ysquareSize )
+		            g.FillPolygon(points)
+		          end
 		        end
 		      end
 		    next
@@ -211,6 +217,27 @@ End
 
 	#tag Method, Flags = &h0
 		Sub newGame(clickCellX As Integer, clickcellY As Integer)
+		  dim mineSetup(-1) as Boolean
+		  dim i,j,mines,unclickedcells as integer
+		  
+		  unclickedcells = rows*cols
+		  mines = round(unclickedcells/mineRatio)
+		  for i=1 to mines
+		    mineSetup.Append true
+		  next
+		  for i=1 to unclickedcells-(mines+1)
+		    mineSetup.Append false
+		  next
+		  mineSetup.Shuffle
+		  for i=1 to cols
+		    for j=1 to rows
+		      if i<>clickCellX+1 or j<>clickcellY+1 then
+		        mineField(i,j).mine = mineSetup.Pop
+		      else
+		        mineField(i,j).mine = false
+		      end
+		    next
+		  next
 		  
 		End Sub
 	#tag EndMethod
@@ -222,6 +249,10 @@ End
 
 	#tag Property, Flags = &h0
 		cols As Integer = 15
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		firstClick As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -237,11 +268,11 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		xsquare As Integer
+		xsquareSize As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		ysquare As Integer
+		ysquareSize As Integer
 	#tag EndProperty
 
 
@@ -251,6 +282,8 @@ End
 	#tag Event
 		Sub Action()
 		  activeGame = true
+		  firstClick = true
+		  Refresh
 		  
 		End Sub
 	#tag EndEvent
@@ -259,6 +292,7 @@ End
 	#tag Event
 		Sub Action()
 		  activeGame = false
+		  Refresh
 		  
 		End Sub
 	#tag EndEvent
@@ -513,12 +547,12 @@ End
 		Type="Boolean"
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="xsquare"
+		Name="xsquareSize"
 		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="ysquare"
+		Name="ysquareSize"
 		Group="Behavior"
 		Type="Integer"
 	#tag EndViewProperty
