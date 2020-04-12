@@ -134,7 +134,7 @@ End
 		          if mineField(clickCellX+1,clickCellY+1).mine then
 		            activeGame = false
 		          else
-		            
+		            clearClick(clickCellX,clickCellY)
 		          end
 		        end
 		      end
@@ -218,6 +218,12 @@ End
 		End Sub
 	#tag EndEvent
 
+
+	#tag Method, Flags = &h0
+		Sub clearClick(clickCellX As Integer, clickcellY As Integer)
+		  
+		End Sub
+	#tag EndMethod
 
 	#tag Method, Flags = &h0
 		Sub newGame(clickCellX As Integer, clickcellY As Integer)

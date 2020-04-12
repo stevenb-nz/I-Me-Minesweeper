@@ -67,6 +67,21 @@ Protected Class Cell
 			Group="Behavior"
 			Type="Integer"
 		#tag EndViewProperty
+		#tag ViewProperty
+			Name="cleared"
+			Group="Behavior"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="flagged"
+			Group="Behavior"
+			Type="Boolean"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="mine"
+			Group="Behavior"
+			Type="Boolean"
+		#tag EndViewProperty
 	#tag EndViewBehavior
 End Class
 #tag EndClass
