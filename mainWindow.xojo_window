@@ -238,6 +238,28 @@ End
 		      end
 		    next
 		  next
+		  for i=1 to cols
+		    for j=1 to rows
+		      if mineField(i,j).mine then
+		        mineField(i+1,j).neighbours = mineField(i+1,j).neighbours+1
+		        mineField(i+1,j+1).neighbours = mineField(i+1,j+1).neighbours+1
+		        mineField(i,j+1).neighbours = mineField(i,j+1).neighbours+1
+		        mineField(i-1,j+1).neighbours = mineField(i-1,j+1).neighbours+1
+		        mineField(i-1,j).neighbours = mineField(i-1,j).neighbours+1
+		        mineField(i-1,j-1).neighbours = mineField(i-1,j-1).neighbours+1
+		        mineField(i,j-1).neighbours = mineField(i,j-1).neighbours+1
+		        mineField(i+1,j-1).neighbours = mineField(i+1,j-1).neighbours+1
+		      end
+		    next
+		  next
+		  for i = 0 to cols+1
+		    mineField(i,0).neighbours = -1
+		    mineField(i,rows+1).neighbours = -1
+		  next
+		  for j = 0 to rows+1
+		    mineField(0,j).neighbours = -1
+		    mineField(cols+1,j).neighbours = -1
+		  next
 		  
 		End Sub
 	#tag EndMethod
@@ -555,5 +577,10 @@ End
 		Name="ysquareSize"
 		Group="Behavior"
 		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="firstClick"
+		Group="Behavior"
+		Type="Boolean"
 	#tag EndViewProperty
 #tag EndViewBehavior
