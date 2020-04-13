@@ -221,7 +221,11 @@ End
 
 	#tag Method, Flags = &h0
 		Sub clearClick(clickCellX As Integer, clickcellY As Integer)
-		  
+		  if mineField(clickCellX+1,clickcellY+1).neighbours > 0 then
+		    mineField(clickCellX+1,clickcellY+1).cleared = true
+		  else
+		    
+		  end
 		End Sub
 	#tag EndMethod
 
