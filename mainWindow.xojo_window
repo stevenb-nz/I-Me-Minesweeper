@@ -262,14 +262,6 @@ End
 		      end
 		    next
 		  next
-		  for i = 0 to cols+1
-		    mineField(i,0).neighbours = -1
-		    mineField(i,rows+1).neighbours = -1
-		  next
-		  for j = 0 to rows+1
-		    mineField(0,j).neighbours = -1
-		    mineField(cols+1,j).neighbours = -1
-		  next
 		  
 		End Sub
 	#tag EndMethod
@@ -313,6 +305,13 @@ End
 #tag Events newButton
 	#tag Event
 		Sub Action()
+		  dim i,j as integer
+		  
+		  for i=1 to cols
+		    for j=1 to rows
+		      mineField(i,j).cleared = false
+		    next
+		  next
 		  activeGame = true
 		  firstClick = true
 		  Refresh

@@ -2,7 +2,7 @@
 Protected Class Cell
 	#tag Method, Flags = &h0
 		Sub Constructor()
-		  cleared = false
+		  cleared = true
 		  flagged = false
 		  mine = false
 		  neighbours = 0
