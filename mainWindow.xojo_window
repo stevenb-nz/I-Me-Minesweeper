@@ -171,6 +171,7 @@ End
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  dim i,j,xlimit,ylimit as integer
+		  dim fontSize as integer = 36
 		  dim points() As Double
 		  
 		  xlimit = xsquareSize*cols+10
@@ -191,7 +192,14 @@ End
 		  for i = 1 to cols
 		    for j = 1 to rows
 		      if mineField(i,j).cleared then
-		        'neighbours, if neighbours > 0
+		        g.ForeColor = Color.Green
+		        points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
+		        g.FillPolygon(points)
+		        if mineField(i,j).neighbours > 0 then
+		          g.ForeColor = Color.Black
+		          g.TextSize = fontsize
+		          g.DrawString(str(mineField(i,j).neighbours),i*xsquareSize-(xsquareSize/2+10),j*ysquareSize-(fontSize/2-10))
+		        end
 		      else
 		        if mineField(i,j).mine and not activeGame then
 		          g.ForeColor = Color.Red
