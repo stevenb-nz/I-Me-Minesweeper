@@ -322,6 +322,7 @@ End
 		  for i=1 to cols
 		    for j=1 to rows
 		      mineField(i,j).cleared = false
+		      mineField(i,j).flagged = false
 		    next
 		  next
 		  activeGame = true
