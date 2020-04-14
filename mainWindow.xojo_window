@@ -234,8 +234,32 @@ End
 		Sub clearClick(clickCellX As Integer, clickcellY As Integer)
 		  mineField(clickCellX+1,clickcellY+1).cleared = true
 		  if mineField(clickCellX+1,clickcellY+1).neighbours = 0 then
-		    
+		    if not mineField(clickCellX,clickcellY).cleared then
+		      clearClick(clickCellX-1,clickcellY-1)
+		    end
+		    if not mineField(clickCellX,clickcellY+1).cleared then
+		      clearClick(clickCellX-1,clickcellY)
+		    end
+		    if not mineField(clickCellX,clickcellY+2).cleared then
+		      clearClick(clickCellX-1,clickcellY+1)
+		    end
+		    if not mineField(clickCellX+1,clickcellY+2).cleared then
+		      clearClick(clickCellX,clickcellY+1)
+		    end
+		    if not mineField(clickCellX+2,clickcellY+2).cleared then
+		      clearClick(clickCellX+1,clickcellY+1)
+		    end
+		    if not mineField(clickCellX+2,clickcellY+1).cleared then
+		      clearClick(clickCellX+1,clickcellY)
+		    end
+		    if not mineField(clickCellX+2,clickcellY).cleared then
+		      clearClick(clickCellX+1,clickcellY-1)
+		    end
+		    if not mineField(clickCellX+1,clickcellY).cleared then
+		      clearClick(clickCellX,clickcellY-1)
+		    end
 		  end
+		  
 		End Sub
 	#tag EndMethod
 
