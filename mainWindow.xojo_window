@@ -171,20 +171,21 @@ End
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
 		  dim i,j,xlimit,ylimit as integer
-		  dim fontSize as integer = 36
+		  dim fontSize as integer
+		  dim sw as Double
 		  dim points() As Double
+		  dim ps As String
 		  
 		  xlimit = xsquareSize*cols+10
 		  ylimit = ysquareSize*rows+10
+		  fontSize = (ysquareSize-10)/11*9
 		  
 		  g.PenWidth = 10
 		  g.PenHeight = 10
 		  g.DrawRect(0,0,xlimit,ylimit)
-		  
 		  for i = 1 to cols
 		    g.DrawLine(i*xsquareSize,0,i*xsquareSize,ylimit-10)
 		  next
-		  
 		  for j = 1 to rows
 		    g.DrawLine(0,j*ysquareSize,xlimit-10,j*ysquareSize)
 		  next
@@ -198,7 +199,9 @@ End
 		        if mineField(i,j).neighbours > 0 then
 		          g.ForeColor = Color.Black
 		          g.TextSize = fontsize
-		          g.DrawString(str(mineField(i,j).neighbours),i*xsquareSize-(xsquareSize/2+10),j*ysquareSize-(fontSize/2-10))
+		          ps = str(mineField(i,j).neighbours)
+		          sw = g.StringWidth(ps)
+		          g.DrawString(ps,i*xsquareSize-(xsquaresize-10+sw)/2,j*ysquareSize-(ysquaresize-(fontsize+10))/2)
 		        end
 		      else
 		        if mineField(i,j).mine and not activeGame then
