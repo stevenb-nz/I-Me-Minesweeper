@@ -124,7 +124,7 @@ End
 		      if mineField(clickCellX+1,clickCellY+1).flagged then
 		        mineField(clickCellX+1,clickCellY+1).flagged = false
 		      else
-		        if clickInCellx+clickInCelly < 63 then
+		        if (clickInCellx-10)/(xsquareSize-10)+(clickInCelly-10)/(ysquareSize-10) < 1 then
 		          mineField(clickCellX+1,clickCellY+1).flagged = true
 		        else
 		          if firstClick then
