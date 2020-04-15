@@ -307,6 +307,11 @@ End
 	#tag Method, Flags = &h0
 		Sub clearClick(clickCellX As Integer, clickcellY As Integer)
 		  mineField(clickCellX+1,clickcellY+1).cleared = true
+		  if mineField(clickCellX+1,clickcellY+1).flagged then
+		    mineField(clickCellX+1,clickcellY+1).flagged = false
+		    flagged = flagged - 1
+		    flagsLabel.text = str(flagged)+if(flagged=1," Flag"," Flags")
+		  end
 		  if mineField(clickCellX+1,clickcellY+1).neighbours = 0 then
 		    if not mineField(clickCellX,clickcellY).cleared then
 		      clearClick(clickCellX-1,clickcellY-1)
