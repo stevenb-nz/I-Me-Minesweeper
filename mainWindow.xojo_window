@@ -90,6 +90,76 @@ Begin Window mainWindow
       Visible         =   True
       Width           =   80
    End
+   Begin Label minesLabel
+      AutoDeactivate  =   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   850
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   2
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "0 Mines"
+      TextAlign       =   1
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   20
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   80
+   End
+   Begin Label flagsLabel
+      AutoDeactivate  =   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   850
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   3
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "0 Flags"
+      TextAlign       =   1
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   52
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   80
+   End
 End
 #tag EndWindow
 
@@ -123,9 +193,13 @@ End
 		    if goodClick then
 		      if mineField(clickCellX+1,clickCellY+1).flagged then
 		        mineField(clickCellX+1,clickCellY+1).flagged = false
+		        flagged = flagged - 1
+		        flagsLabel.text = str(flagged)+if(flagged=1," Flag"," Flags")
 		      else
 		        if (clickInCellx-10)/(xsquareSize-10)+(clickInCelly-10)/(ysquareSize-10) < 1 then
 		          mineField(clickCellX+1,clickCellY+1).flagged = true
+		          flagged = flagged + 1
+		          flagsLabel.text = str(flagged)+if(flagged=1," Flag"," Flags")
 		        else
 		          if firstClick then
 		            newGame(clickCellX,clickCellY)
@@ -326,6 +400,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		flagged As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		mineField(-1,-1) As Cell
 	#tag EndProperty
 
@@ -353,12 +431,14 @@ End
 		Sub Action()
 		  dim i,j as integer
 		  
+		  minesLabel.Text = str(round((rows*cols)/mineRatio))+" Mines"
 		  for i=1 to cols
 		    for j=1 to rows
 		      mineField(i,j).cleared = false
 		      mineField(i,j).flagged = false
 		    next
 		  next
+		  flagged = 0
 		  activeGame = true
 		  firstClick = true
 		  Refresh
