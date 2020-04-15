@@ -266,23 +266,30 @@ End
 	#tag Method, Flags = &h0
 		Sub newGame(clickCellX As Integer, clickcellY As Integer)
 		  dim mineSetup(-1) as Boolean
-		  dim i,j,mines,unclickedcells as integer
+		  dim i,j,mines,opening,unclickedcells as integer
 		  
 		  unclickedcells = rows*cols
 		  mines = round(unclickedcells/mineRatio)
 		  for i=1 to mines
 		    mineSetup.Append true
 		  next
-		  for i=1 to unclickedcells-(mines+1)
+		  if (clickCellX=0 or clickCellX=cols-1) and (clickCellY=0 or clickCellY=rows-1) then
+		    opening = 4
+		  ElseIf clickCellX=0 or clickCellX=cols-1 or clickCellY=0 or clickCellY=rows-1 then
+		    opening = 6
+		  else
+		    opening = 9
+		  end
+		  for i=1 to unclickedcells-(mines+opening)
 		    mineSetup.Append false
 		  next
 		  mineSetup.Shuffle
 		  for i=1 to cols
 		    for j=1 to rows
-		      if i<>clickCellX+1 or j<>clickcellY+1 then
-		        mineField(i,j).mine = mineSetup.Pop
-		      else
+		      if abs(i-(clickCellX+1)) < 2 and abs(j-(clickCellY+1)) < 2 then
 		        mineField(i,j).mine = false
+		      else
+		        mineField(i,j).mine = mineSetup.Pop
 		      end
 		      mineField(i,j).neighbours = 0
 		    next
