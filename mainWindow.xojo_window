@@ -206,6 +206,7 @@ End
 		            firstClick = false
 		          end
 		          if mineField(clickCellX+1,clickCellY+1).mine then
+		            MsgBox "You Lose!"
 		            activeGame = false
 		          else
 		            clearClick(clickCellX,clickCellY)
@@ -307,6 +308,11 @@ End
 	#tag Method, Flags = &h0
 		Sub clearClick(clickCellX As Integer, clickcellY As Integer)
 		  mineField(clickCellX+1,clickcellY+1).cleared = true
+		  cleared = cleared + 1
+		  if cleared = rows*cols-round((rows*cols)/mineRatio) then
+		    MsgBox "You Win!"
+		    activeGame = False
+		  end
 		  if mineField(clickCellX+1,clickcellY+1).flagged then
 		    mineField(clickCellX+1,clickcellY+1).flagged = false
 		    flagged = flagged - 1
@@ -397,6 +403,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		cleared As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		cols As Integer = 15
 	#tag EndProperty
 
@@ -413,7 +423,7 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		mineRatio As Integer = 5
+		mineRatio As Integer = 6
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -443,7 +453,9 @@ End
 		      mineField(i,j).flagged = false
 		    next
 		  next
+		  cleared = 0
 		  flagged = 0
+		  flagsLabel.text = str(flagged)+if(flagged=1," Flag"," Flags")
 		  activeGame = true
 		  firstClick = true
 		  Refresh
@@ -723,5 +735,15 @@ End
 		Name="firstClick"
 		Group="Behavior"
 		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="cleared"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="flagged"
+		Group="Behavior"
+		Type="Integer"
 	#tag EndViewProperty
 #tag EndViewBehavior
