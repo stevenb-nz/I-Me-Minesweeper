@@ -292,23 +292,9 @@ End
 
 	#tag Event
 		Sub Open()
-		  dim i,j,cp1,rp1 as integer
-		  
 		  'get settings from DB
 		  
-		  xsquareSize = floor((self.height-10)/cols)
-		  ysquareSize = floor((self.height-10)/rows)
-		  
-		  cp1 = cols+1
-		  rp1 = rows+1
-		  
-		  redim mineField(cp1,rp1)
-		  
-		  for i = 0 to cp1
-		    for j = 0 to rp1
-		      mineField(i,j) = new Cell
-		    next
-		  next
+		  newSettings
 		  
 		End Sub
 	#tag EndEvent
@@ -467,6 +453,27 @@ End
 		End Sub
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Sub newSettings()
+		  dim i,j,cp1,rp1 as integer
+		  
+		  xsquareSize = floor((self.height-10)/cols)
+		  ysquareSize = floor((self.height-10)/rows)
+		  
+		  cp1 = cols+1
+		  rp1 = rows+1
+		  
+		  redim mineField(cp1,rp1)
+		  
+		  for i = 0 to cp1
+		    for j = 0 to rp1
+		      mineField(i,j) = new Cell
+		    next
+		  next
+		  
+		End Sub
+	#tag EndMethod
+
 
 	#tag Property, Flags = &h0
 		cleared As Integer
@@ -537,9 +544,12 @@ End
 #tag Events settingsButton
 	#tag Event
 		Sub Action()
-		  gameState = ""
-		  gameStateLabel.Text=""
-		  Refresh
+		  if true then
+		    gameState = ""
+		    gameStateLabel.Text=""
+		    newSettings
+		    Refresh
+		  end
 		  
 		End Sub
 	#tag EndEvent
