@@ -92,7 +92,7 @@ Begin Window mainWindow
    End
    Begin Label minesLabel
       AutoDeactivate  =   True
-      Bold            =   False
+      Bold            =   True
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -119,7 +119,7 @@ Begin Window mainWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   20
+      Top             =   84
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -127,7 +127,7 @@ Begin Window mainWindow
    End
    Begin Label flagsLabel
       AutoDeactivate  =   True
-      Bold            =   False
+      Bold            =   True
       DataField       =   ""
       DataSource      =   ""
       Enabled         =   True
@@ -149,6 +149,76 @@ Begin Window mainWindow
       TabPanelIndex   =   0
       TabStop         =   True
       Text            =   "0 Flags"
+      TextAlign       =   1
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   116
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   80
+   End
+   Begin Label gameTextLabel
+      AutoDeactivate  =   True
+      Bold            =   True
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   850
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   4
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "Game"
+      TextAlign       =   1
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   20
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   80
+   End
+   Begin Label gameStateLabel
+      AutoDeactivate  =   True
+      Bold            =   True
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   850
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   5
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   ""
       TextAlign       =   1
       TextColor       =   &c00000000
       TextFont        =   "System"
@@ -206,8 +276,8 @@ End
 		            firstClick = false
 		          end
 		          if mineField(clickCellX+1,clickCellY+1).mine then
-		            MsgBox "You Lose!"
-		            gameState = "lost"
+		            gameState = "over"
+		            gameStateLabel.Text = "Lost!"
 		          else
 		            clearClick(clickCellX,clickCellY)
 		          end
@@ -310,8 +380,8 @@ End
 		  mineField(clickCellX+1,clickcellY+1).cleared = true
 		  cleared = cleared + 1
 		  if cleared = rows*cols-round((rows*cols)/mineRatio) then
-		    MsgBox "You Win!"
-		    gameState = "won"
+		    gameState = "over"
+		    gameStateLabel.Text = "Won!"
 		  end
 		  if mineField(clickCellX+1,clickcellY+1).flagged then
 		    mineField(clickCellX+1,clickcellY+1).flagged = false
@@ -457,6 +527,7 @@ End
 		  flagged = 0
 		  flagsLabel.text = str(flagged)+if(flagged=1," Flag"," Flags")
 		  gameState = "active"
+		  gameStateLabel.Text = "On!"
 		  firstClick = true
 		  Refresh
 		  
@@ -467,6 +538,7 @@ End
 	#tag Event
 		Sub Action()
 		  gameState = ""
+		  gameStateLabel.Text=""
 		  Refresh
 		  
 		End Sub
