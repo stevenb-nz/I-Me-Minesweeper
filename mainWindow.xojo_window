@@ -169,7 +169,7 @@ End
 		  dim goodClick as boolean
 		  dim clickCellX,clickCellY,clickInCellX,clickInCellY as integer
 		  
-		  if activeGame then
+		  if gameState = "active" then
 		    goodClick = true
 		    
 		    clickCellX = x\xsquareSize
@@ -207,7 +207,7 @@ End
 		          end
 		          if mineField(clickCellX+1,clickCellY+1).mine then
 		            MsgBox "You Lose!"
-		            activeGame = false
+		            gameState = "lost"
 		          else
 		            clearClick(clickCellX,clickCellY)
 		          end
@@ -284,7 +284,7 @@ End
 		          points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
 		          g.FillPolygon(points)
 		        else
-		          if activeGame or not mineField(i,j).mine then
+		          if gameState="active" or not mineField(i,j).mine then
 		            g.ForeColor = Color.Orange
 		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize)
 		            g.FillPolygon(points)
@@ -311,7 +311,7 @@ End
 		  cleared = cleared + 1
 		  if cleared = rows*cols-round((rows*cols)/mineRatio) then
 		    MsgBox "You Win!"
-		    activeGame = False
+		    gameState = "won"
 		  end
 		  if mineField(clickCellX+1,clickcellY+1).flagged then
 		    mineField(clickCellX+1,clickcellY+1).flagged = false
@@ -399,10 +399,6 @@ End
 
 
 	#tag Property, Flags = &h0
-		activeGame As Boolean = false
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
 		cleared As Integer
 	#tag EndProperty
 
@@ -416,6 +412,10 @@ End
 
 	#tag Property, Flags = &h0
 		flagged As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		gameState As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -456,7 +456,7 @@ End
 		  cleared = 0
 		  flagged = 0
 		  flagsLabel.text = str(flagged)+if(flagged=1," Flag"," Flags")
-		  activeGame = true
+		  gameState = "active"
 		  firstClick = true
 		  Refresh
 		  
@@ -466,7 +466,7 @@ End
 #tag Events settingsButton
 	#tag Event
 		Sub Action()
-		  activeGame = false
+		  gameState = ""
 		  Refresh
 		  
 		End Sub
@@ -716,7 +716,7 @@ End
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="activeGame"
+		Name="gameState"
 		Group="Behavior"
 		InitialValue="false"
 		Type="Boolean"
