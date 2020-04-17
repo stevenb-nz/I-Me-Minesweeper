@@ -239,7 +239,7 @@ End
 		  dim goodClick as boolean
 		  dim clickCellX,clickCellY,clickInCellX,clickInCellY as integer
 		  
-		  if gameState = "active" then
+		  if activeGame then
 		    goodClick = true
 		    
 		    clickCellX = x\xsquareSize
@@ -276,7 +276,7 @@ End
 		            firstClick = false
 		          end
 		          if mineField(clickCellX+1,clickCellY+1).mine then
-		            gameState = "over"
+		            activeGame = false
 		            gameStateLabel.Text = "Lost!"
 		          else
 		            clearClick(clickCellX,clickCellY)
@@ -340,7 +340,7 @@ End
 		          points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
 		          g.FillPolygon(points)
 		        else
-		          if gameState="active" or not mineField(i,j).mine then
+		          if activeGame or not mineField(i,j).mine then
 		            g.ForeColor = Color.Orange
 		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize)
 		            g.FillPolygon(points)
@@ -366,7 +366,7 @@ End
 		  mineField(clickCellX+1,clickcellY+1).cleared = true
 		  cleared = cleared + 1
 		  if cleared = rows*cols-round((rows*cols)/mineRatio) then
-		    gameState = "over"
+		    activeGame = false
 		    gameStateLabel.Text = "Won!"
 		  end
 		  if mineField(clickCellX+1,clickcellY+1).flagged then
@@ -476,6 +476,10 @@ End
 
 
 	#tag Property, Flags = &h0
+		activeGame As Boolean = false
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		cleared As Integer
 	#tag EndProperty
 
@@ -489,10 +493,6 @@ End
 
 	#tag Property, Flags = &h0
 		flagged As Integer
-	#tag EndProperty
-
-	#tag Property, Flags = &h0
-		gameState As String
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -533,7 +533,7 @@ End
 		  cleared = 0
 		  flagged = 0
 		  flagsLabel.text = str(flagged)+if(flagged=1," Flag"," Flags")
-		  gameState = "active"
+		  activeGame = true
 		  gameStateLabel.Text = "On!"
 		  firstClick = true
 		  Refresh
@@ -545,7 +545,7 @@ End
 	#tag Event
 		Sub Action()
 		  if true then
-		    gameState = ""
+		    activeGame = false
 		    gameStateLabel.Text=""
 		    newSettings
 		    Refresh
@@ -798,7 +798,7 @@ End
 		Type="Integer"
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="gameState"
+		Name="activeGame"
 		Group="Behavior"
 		InitialValue="false"
 		Type="Boolean"
