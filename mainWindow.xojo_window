@@ -365,7 +365,7 @@ End
 		Sub clearClick(clickCellX As Integer, clickcellY As Integer)
 		  mineField(clickCellX+1,clickcellY+1).cleared = true
 		  cleared = cleared + 1
-		  if cleared = rows*cols-round((rows*cols)/mineRatio) then
+		  if cleared = rows*cols-round((rows*cols)/((emptiesToMines+minesToEmpties)/minesToEmpties)) then
 		    activeGame = false
 		    gameStateLabel.Text = "Won!"
 		  end
@@ -410,7 +410,7 @@ End
 		  dim i,j,mines,opening,unclickedcells as integer
 		  
 		  unclickedcells = rows*cols
-		  mines = round(unclickedcells/mineRatio)
+		  mines = round(unclickedcells/((emptiesToMines+minesToEmpties)/minesToEmpties))
 		  for i=1 to mines
 		    mineSetup.Append true
 		  next
@@ -488,6 +488,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		emptiesToMines As Integer = 37
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		firstClick As Boolean
 	#tag EndProperty
 
@@ -500,7 +504,7 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		mineRatio As Integer = 6
+		minesToEmpties As Integer = 8
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -523,7 +527,7 @@ End
 		Sub Action()
 		  dim i,j as integer
 		  
-		  minesLabel.Text = str(round((rows*cols)/mineRatio))+" Mines"
+		  minesLabel.Text = str(round((rows*cols)/((emptiesToMines+minesToEmpties)/minesToEmpties)))+" Mines"
 		  for i=1 to cols
 		    for j=1 to rows
 		      mineField(i,j).cleared = false
@@ -780,7 +784,7 @@ End
 		EditorType="Boolean"
 	#tag EndViewProperty
 	#tag ViewProperty
-		Name="mineRatio"
+		Name="emptiesToMines"
 		Group="Behavior"
 		InitialValue="5"
 		Type="Integer"
@@ -826,6 +830,12 @@ End
 	#tag ViewProperty
 		Name="flagged"
 		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="minesToEmpties"
+		Group="Behavior"
+		InitialValue="8"
 		Type="Integer"
 	#tag EndViewProperty
 #tag EndViewBehavior
