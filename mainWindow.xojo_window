@@ -293,9 +293,9 @@ End
 	#tag Event
 		Sub Open()
 		  clearColor = Color.Green
-		  clearColor = RGB(clearColor.Red/3*2,clearColor.Green/3*2,clearColor.Blue/3*2)
+		  clearColor = HSV(clearColor.Hue,clearColor.Saturation,clearColor.Value*0.8)
 		  flagColor = Color.Orange
-		  flagColor = RGB(flagColor.Red/3*2,flagColor.Green/3*2,flagColor.Blue/3*2)
+		  flagColor = HSV(flagColor.Hue,flagColor.Saturation,flagColor.Value*0.8)
 		  
 		  'get settings from DB
 		  
