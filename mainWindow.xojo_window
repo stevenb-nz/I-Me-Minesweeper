@@ -292,6 +292,11 @@ End
 
 	#tag Event
 		Sub Open()
+		  clearColor = Color.Green
+		  clearColor = RGB(clearColor.Red/3*2,clearColor.Green/3*2,clearColor.Blue/3*2)
+		  flagColor = Color.Orange
+		  flagColor = RGB(flagColor.Red/3*2,flagColor.Green/3*2,flagColor.Blue/3*2)
+		  
 		  'get settings from DB
 		  
 		  newSettings
@@ -341,10 +346,10 @@ End
 		          g.FillPolygon(points)
 		        else
 		          if activeGame or not mineField(i,j).mine then
-		            g.ForeColor = Color.Orange
+		            g.ForeColor = flagColor
 		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize)
 		            g.FillPolygon(points)
-		            g.ForeColor = Color.Green
+		            g.ForeColor = clearColor
 		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,i*xsquareSize,j*ysquareSize,(i-1)*xsquareSize+10,j*ysquareSize )
 		            g.FillPolygon(points)
 		          else
@@ -457,6 +462,8 @@ End
 		Sub newSettings()
 		  dim i,j,cp1,rp1 as integer
 		  
+		  gameTextLabel.text = str(cols)+"x"+str(rows)+" Game"
+		  
 		  xsquareSize = floor((self.height-10)/cols)
 		  ysquareSize = floor((self.height-10)/rows)
 		  
@@ -480,6 +487,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		clearColor As Color
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		cleared As Integer
 	#tag EndProperty
 
@@ -493,6 +504,10 @@ End
 
 	#tag Property, Flags = &h0
 		firstClick As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		flagColor As Color
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -548,9 +563,22 @@ End
 #tag Events settingsButton
 	#tag Event
 		Sub Action()
-		  if true then
+		  dim c,e,m,r As integer
+		  
+		  c = floor(rnd*16)+10
+		  r = floor(rnd*16)+10
+		  e = floor(rnd*3)*3+6
+		  m = 2
+		  
+		  if c<>cols or e<>emptiesToMines or m<>minesToEmpties or r<>rows then
+		    cols = c
+		    emptiesToMines = e
+		    minesToEmpties = m
+		    rows = r
 		    activeGame = false
 		    gameStateLabel.Text=""
+		    minesLabel.Text = "0 Mines"
+		    flagsLabel.Text = "0 Flags"
 		    newSettings
 		    Refresh
 		  end
@@ -837,5 +865,17 @@ End
 		Group="Behavior"
 		InitialValue="8"
 		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="clearColor"
+		Group="Behavior"
+		InitialValue="&c000000"
+		Type="Color"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="flagColor"
+		Group="Behavior"
+		InitialValue="&c000000"
+		Type="Color"
 	#tag EndViewProperty
 #tag EndViewBehavior
