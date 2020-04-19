@@ -589,6 +589,12 @@ End
 		    Refresh
 		  end
 		  
+		  settingsDialog.cols = cols
+		  settingsDialog.rows = rows
+		  settingsDialog.emptiesToMines = emptiesToMines
+		  settingsDialog.minesToEmpties = minesToEmpties
+		  settingsDialog.ShowModal
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents

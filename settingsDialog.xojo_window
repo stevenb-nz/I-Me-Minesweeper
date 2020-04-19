@@ -26,7 +26,7 @@ Begin Window settingsDialog
    Title           =   "Settings"
    Visible         =   True
    Width           =   212
-   Begin PushButton PushButton1
+   Begin PushButton okayButton
       AutoDeactivate  =   True
       Bold            =   False
       ButtonStyle     =   "0"
@@ -58,7 +58,7 @@ Begin Window settingsDialog
       Visible         =   True
       Width           =   80
    End
-   Begin PushButton PushButton2
+   Begin PushButton cancelButton
       AutoDeactivate  =   True
       Bold            =   False
       ButtonStyle     =   "0"
@@ -340,8 +340,33 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Property, Flags = &h0
+		cols As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		emptiesToMines As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		minesToEmpties As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		rows As Integer
+	#tag EndProperty
+
+
 #tag EndWindowCode
 
+#tag Events cancelButton
+	#tag Event
+		Sub Action()
+		  Close
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Name"
