@@ -341,9 +341,15 @@ End
 		        end
 		      else
 		        if mineField(i,j).flagged then
-		          g.ForeColor = Color.Orange
-		          points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
-		          g.FillPolygon(points)
+		          if activeGame or mineField(i,j).mine then
+		            g.ForeColor = Color.Orange
+		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
+		            g.FillPolygon(points)
+		          else
+		            g.ForeColor = Color.Brown
+		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
+		            g.FillPolygon(points)
+		          end
 		        else
 		          if activeGame or not mineField(i,j).mine then
 		            g.ForeColor = flagColor
