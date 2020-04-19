@@ -359,6 +359,17 @@ End
 
 #tag EndWindowCode
 
+#tag Events okayButton
+	#tag Event
+		Sub Action()
+		  mainWindow.cols = self.cols
+		  mainWindow.rows = self.rows
+		  mainWindow.emptiesToMines = self.emptiesToMines
+		  mainWindow.minesToEmpties = self.minesToEmpties
+		  close
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events cancelButton
 	#tag Event
 		Sub Action()
