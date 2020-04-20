@@ -9,16 +9,16 @@ Begin Window settingsDialog
    FullScreen      =   False
    FullScreenButton=   False
    HasBackColor    =   False
-   Height          =   224
+   Height          =   323
    ImplicitInstance=   True
    LiveResize      =   True
    MacProcID       =   0
-   MaxHeight       =   224
+   MaxHeight       =   323
    MaximizeButton  =   True
    MaxWidth        =   212
    MenuBar         =   0
    MenuBarVisible  =   True
-   MinHeight       =   224
+   MinHeight       =   323
    MinimizeButton  =   True
    MinWidth        =   212
    Placement       =   0
@@ -52,7 +52,7 @@ Begin Window settingsDialog
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   184
+      Top             =   283
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -84,7 +84,7 @@ Begin Window settingsDialog
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   184
+      Top             =   283
       Transparent     =   False
       Underline       =   False
       Visible         =   True
@@ -113,7 +113,7 @@ Begin Window settingsDialog
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   88
+      Top             =   171
       Transparent     =   False
       Underline       =   False
       Value           =   False
@@ -143,7 +143,7 @@ Begin Window settingsDialog
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   120
+      Top             =   203
       Transparent     =   False
       Underline       =   False
       Value           =   False
@@ -173,133 +173,12 @@ Begin Window settingsDialog
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   152
+      Top             =   235
       Transparent     =   False
       Underline       =   False
       Value           =   False
       Visible         =   True
       Width           =   172
-   End
-   Begin TextField colsTextField
-      AcceptTabs      =   False
-      Alignment       =   3
-      AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
-      BackColor       =   &cFFFFFF00
-      Bold            =   False
-      Border          =   True
-      CueText         =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   20
-      LimitText       =   0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Mask            =   ""
-      Password        =   False
-      ReadOnly        =   False
-      Scope           =   0
-      TabIndex        =   5
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   20
-      Transparent     =   False
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   40
-   End
-   Begin Label colsLabel
-      AutoDeactivate  =   True
-      Bold            =   False
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   72
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Multiline       =   False
-      Scope           =   0
-      Selectable      =   False
-      TabIndex        =   6
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   "cells across"
-      TextAlign       =   0
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   21
-      Transparent     =   False
-      Underline       =   False
-      Visible         =   True
-      Width           =   120
-   End
-   Begin TextField rowsTextField
-      AcceptTabs      =   False
-      Alignment       =   3
-      AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
-      BackColor       =   &cFFFFFF00
-      Bold            =   False
-      Border          =   True
-      CueText         =   ""
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   22
-      HelpTag         =   ""
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   20
-      LimitText       =   0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Mask            =   ""
-      Password        =   False
-      ReadOnly        =   False
-      Scope           =   0
-      TabIndex        =   7
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextColor       =   &c00000000
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   54
-      Transparent     =   False
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   40
    End
    Begin Label rowsLabel
       AutoDeactivate  =   True
@@ -312,7 +191,7 @@ Begin Window settingsDialog
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   72
+      Left            =   20
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -324,17 +203,154 @@ Begin Window settingsDialog
       TabIndex        =   8
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "cells down"
-      TextAlign       =   0
+      Text            =   "15 cells down"
+      TextAlign       =   1
       TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   55
+      Top             =   88
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   120
+      Width           =   172
+   End
+   Begin Label colsLabel
+      AutoDeactivate  =   True
+      Bold            =   False
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   20
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Multiline       =   False
+      Scope           =   0
+      Selectable      =   False
+      TabIndex        =   6
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Text            =   "15 cells across"
+      TextAlign       =   1
+      TextColor       =   &c00000000
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   21
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   172
+   End
+   Begin Slider colsSlider
+      AutoDeactivate  =   True
+      Enabled         =   True
+      Height          =   23
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   20
+      LineStep        =   1
+      LiveScroll      =   False
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Maximum         =   100
+      Minimum         =   0
+      PageStep        =   20
+      Scope           =   0
+      TabIndex        =   9
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TickStyle       =   "0"
+      Top             =   53
+      Transparent     =   False
+      Value           =   0
+      Visible         =   True
+      Width           =   172
+   End
+   Begin Slider rowsSlider
+      AutoDeactivate  =   True
+      Enabled         =   True
+      Height          =   23
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   20
+      LineStep        =   1
+      LiveScroll      =   False
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Maximum         =   100
+      Minimum         =   0
+      PageStep        =   20
+      Scope           =   0
+      TabIndex        =   10
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TickStyle       =   "0"
+      Top             =   120
+      Transparent     =   False
+      Value           =   0
+      Visible         =   True
+      Width           =   172
+   End
+   Begin Separator Separator1
+      AutoDeactivate  =   True
+      Enabled         =   True
+      Height          =   4
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   74
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   11
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Top             =   155
+      Transparent     =   False
+      Visible         =   True
+      Width           =   64
+   End
+   Begin Separator Separator2
+      AutoDeactivate  =   True
+      Enabled         =   True
+      Height          =   4
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   74
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   12
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Top             =   267
+      Transparent     =   False
+      Visible         =   True
+      Width           =   64
    End
 End
 #tag EndWindow
@@ -603,5 +619,25 @@ End
 		InitialValue="True"
 		Type="Boolean"
 		EditorType="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="cols"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="emptiesToMines"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="minesToEmpties"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="rows"
+		Group="Behavior"
+		Type="Integer"
 	#tag EndViewProperty
 #tag EndViewBehavior
