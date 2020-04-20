@@ -93,7 +93,7 @@ Begin Window settingsDialog
    Begin RadioButton minesRadioButton
       AutoDeactivate  =   True
       Bold            =   False
-      Caption         =   "Fewer mines"
+      Caption         =   "More mines"
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -153,7 +153,7 @@ Begin Window settingsDialog
    Begin RadioButton minesRadioButton
       AutoDeactivate  =   True
       Bold            =   False
-      Caption         =   "More mines"
+      Caption         =   "Fewer mines"
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -391,6 +391,15 @@ End
 	#tag Event
 		Sub Action()
 		  Close
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events minesRadioButton
+	#tag Event
+		Sub Action(index as Integer)
+		  minesToEmpties = 2
+		  emptiesToMines = (index*3)+6
 		  
 		End Sub
 	#tag EndEvent

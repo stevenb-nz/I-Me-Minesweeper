@@ -469,6 +469,7 @@ End
 		  dim i,j,cp1,rp1 as integer
 		  
 		  gameTextLabel.text = str(cols)+"x"+str(rows)+" Game"
+		  minesLabel.Text = "0 Mines"
 		  
 		  xsquareSize = floor((self.height-10)/cols)
 		  ysquareSize = floor((self.height-10)/rows)
@@ -505,7 +506,7 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		emptiesToMines As Integer = 37
+		emptiesToMines As Integer = 9
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -525,7 +526,7 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
-		minesToEmpties As Integer = 8
+		minesToEmpties As Integer = 2
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
@@ -576,14 +577,7 @@ End
 		  settingsDialog.rowsSlider.value = rows
 		  settingsDialog.colsSlider.value = cols
 		  if minesToEmpties = 2 then
-		    select case emptiesToMines
-		    case 6
-		      settingsDialog.minesRadioButton(0).Value = True
-		    case 9
-		      settingsDialog.minesRadioButton(1).Value = True
-		    case 12
-		      settingsDialog.minesRadioButton(2).Value = True
-		    end
+		    settingsDialog.minesRadioButton((emptiesToMines-6)/3).Value = True
 		  end
 		  settingsDialog.ShowModal
 		  newSettings
