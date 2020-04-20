@@ -93,7 +93,7 @@ Begin Window settingsDialog
    Begin RadioButton minesRadioButton
       AutoDeactivate  =   True
       Bold            =   False
-      Caption         =   "More mines"
+      Caption         =   "Fewer mines"
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -113,7 +113,7 @@ Begin Window settingsDialog
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   152
+      Top             =   88
       Transparent     =   False
       Underline       =   False
       Value           =   False
@@ -153,7 +153,7 @@ Begin Window settingsDialog
    Begin RadioButton minesRadioButton
       AutoDeactivate  =   True
       Bold            =   False
-      Caption         =   "Fewer mines"
+      Caption         =   "More mines"
       Enabled         =   True
       Height          =   20
       HelpTag         =   ""
@@ -173,7 +173,7 @@ Begin Window settingsDialog
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   88
+      Top             =   152
       Transparent     =   False
       Underline       =   False
       Value           =   False
@@ -367,6 +367,7 @@ End
 		  mainWindow.emptiesToMines = self.emptiesToMines
 		  mainWindow.minesToEmpties = self.minesToEmpties
 		  close
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents

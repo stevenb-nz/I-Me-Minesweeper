@@ -569,30 +569,22 @@ End
 #tag Events settingsButton
 	#tag Event
 		Sub Action()
-		  'dim c,e,m,r As integer
-		  '
-		  'c = floor(rnd*16)+10
-		  'r = floor(rnd*16)+10
-		  'e = floor(rnd*3)*3+6
-		  'm = 2
-		  '
-		  'if c<>cols or e<>emptiesToMines or m<>minesToEmpties or r<>rows then
-		  'cols = c
-		  'emptiesToMines = e
-		  'minesToEmpties = m
-		  'rows = r
-		  'activeGame = false
-		  'gameStateLabel.Text=""
-		  'minesLabel.Text = "0 Mines"
-		  'flagsLabel.Text = "0 Flags"
-		  'newSettings
-		  'Refresh
-		  'end
-		  '
 		  settingsDialog.cols = self.cols
 		  settingsDialog.rows = self.rows
 		  settingsDialog.emptiesToMines = self.emptiesToMines
 		  settingsDialog.minesToEmpties = self.minesToEmpties
+		  settingsDialog.rowsTextField.text = str(rows)
+		  settingsDialog.colsTextField.text = str(cols)
+		  if minesToEmpties = 2 then
+		    select case emptiesToMines
+		    case 6
+		      settingsDialog.minesRadioButton(0).Value = True
+		    case 9
+		      settingsDialog.minesRadioButton(1).Value = True
+		    case 12
+		      settingsDialog.minesRadioButton(2).Value = True
+		    end
+		  end
 		  settingsDialog.ShowModal
 		  newSettings
 		  refresh
