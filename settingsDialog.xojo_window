@@ -265,8 +265,8 @@ Begin Window settingsDialog
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
-      Maximum         =   100
-      Minimum         =   0
+      Maximum         =   25
+      Minimum         =   10
       PageStep        =   20
       Scope           =   0
       TabIndex        =   9
@@ -275,7 +275,7 @@ Begin Window settingsDialog
       TickStyle       =   "0"
       Top             =   53
       Transparent     =   False
-      Value           =   0
+      Value           =   15
       Visible         =   True
       Width           =   172
    End
@@ -294,8 +294,8 @@ Begin Window settingsDialog
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
-      Maximum         =   100
-      Minimum         =   0
+      Maximum         =   25
+      Minimum         =   10
       PageStep        =   20
       Scope           =   0
       TabIndex        =   10
@@ -304,7 +304,7 @@ Begin Window settingsDialog
       TickStyle       =   "0"
       Top             =   120
       Transparent     =   False
-      Value           =   0
+      Value           =   15
       Visible         =   True
       Width           =   172
    End
@@ -391,6 +391,24 @@ End
 	#tag Event
 		Sub Action()
 		  Close
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events colsSlider
+	#tag Event
+		Sub ValueChanged()
+		  self.cols = me.Value
+		  colsLabel.Text = str(me.Value)+" cells across"
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rowsSlider
+	#tag Event
+		Sub ValueChanged()
+		  self.rows = me.Value
+		  rowsLabel.Text = str(me.Value)+" cells down"
 		  
 		End Sub
 	#tag EndEvent

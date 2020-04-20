@@ -573,8 +573,8 @@ End
 		  settingsDialog.rows = self.rows
 		  settingsDialog.emptiesToMines = self.emptiesToMines
 		  settingsDialog.minesToEmpties = self.minesToEmpties
-		  settingsDialog.rowsTextField.text = str(rows)
-		  settingsDialog.colsTextField.text = str(cols)
+		  settingsDialog.rowsSlider.value = rows
+		  settingsDialog.colsSlider.value = cols
 		  if minesToEmpties = 2 then
 		    select case emptiesToMines
 		    case 6
