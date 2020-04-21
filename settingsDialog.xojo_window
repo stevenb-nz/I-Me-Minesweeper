@@ -382,6 +382,7 @@ End
 		  mainWindow.rows = self.rows
 		  mainWindow.emptiesToMines = self.emptiesToMines
 		  mainWindow.minesToEmpties = self.minesToEmpties
+		  mainWindow.settingsChanged = True
 		  close
 		  
 		End Sub
@@ -390,6 +391,7 @@ End
 #tag Events cancelButton
 	#tag Event
 		Sub Action()
+		  mainWindow.settingsChanged = false
 		  Close
 		  
 		End Sub
