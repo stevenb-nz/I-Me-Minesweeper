@@ -325,7 +325,6 @@ End
 		  for j = 1 to rows
 		    g.DrawLine(0,j*ysquareSize,xlimit-10,j*ysquareSize)
 		  next
-		  
 		  for i = 1 to cols
 		    for j = 1 to rows
 		      if mineField(i,j).cleared then
@@ -367,6 +366,7 @@ End
 		      end
 		    next
 		  next
+		  flagCheck(g)
 		  
 		End Sub
 	#tag EndEvent
@@ -411,6 +411,46 @@ End
 		      clearClick(clickCellX,clickcellY-1)
 		    end
 		  end
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub flagCheck(g as graphics)
+		  dim cflags,cmines,i,j as integer
+		  
+		  for i = 1 to cols
+		    cmines = 0
+		    cflags = 0
+		    for j = 1 to rows
+		      if mineField(i,j).flagged then
+		        cflags = cflags + 1
+		      end
+		      if mineField(i,j).mine then
+		        cmines = cmines + 1
+		      end
+		    next
+		    if cmines = cflags then
+		      g.ForeColor = Color.White
+		      g.FillOval((i-0.5)*xsquareSize,2,5,5)
+		    end
+		  next
+		  for i = 1 to rows
+		    cmines = 0
+		    cflags = 0
+		    for j = 1 to cols
+		      if mineField(j,i).flagged then
+		        cflags = cflags + 1
+		      end
+		      if mineField(j,i).mine then
+		        cmines = cmines + 1
+		      end
+		    next
+		    if cmines = cflags then
+		      g.ForeColor = Color.White
+		      g.FillOval(2,(i-0.5)*ysquareSize,5,5)
+		    end
+		  next
 		  
 		End Sub
 	#tag EndMethod
@@ -470,6 +510,7 @@ End
 		  
 		  gameTextLabel.text = str(cols)+"x"+str(rows)+" Game"
 		  minesLabel.Text = "0 Mines"
+		  flagsLabel.Text = "0 Flags"
 		  
 		  xsquareSize = floor((self.height-10)/cols)
 		  ysquareSize = floor((self.height-10)/rows)
@@ -534,6 +575,10 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		settingsChanged As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		xsquareSize As Integer
 	#tag EndProperty
 
@@ -580,8 +625,10 @@ End
 		    settingsDialog.minesRadioButton((emptiesToMines-6)/3).Value = True
 		  end
 		  settingsDialog.ShowModal
-		  newSettings
-		  refresh
+		  if settingsChanged then
+		    newSettings
+		    refresh
+		  end
 		  
 		End Sub
 	#tag EndEvent
@@ -877,5 +924,10 @@ End
 		Group="Behavior"
 		InitialValue="&c000000"
 		Type="Color"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="settingsChanged"
+		Group="Behavior"
+		Type="Boolean"
 	#tag EndViewProperty
 #tag EndViewBehavior
