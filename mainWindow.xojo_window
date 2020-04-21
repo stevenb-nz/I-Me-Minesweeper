@@ -430,9 +430,10 @@ End
 		        cmines = cmines + 1
 		      end
 		    next
-		    if cmines = cflags then
+		    if cmines > 0 and cmines = cflags then
 		      g.ForeColor = Color.White
 		      g.FillOval((i-0.5)*xsquareSize,2,5,5)
+		      g.FillOval((i-0.5)*xsquareSize,rows*ysquareSize+3,5,5)
 		    end
 		  next
 		  for i = 1 to rows
@@ -446,9 +447,10 @@ End
 		        cmines = cmines + 1
 		      end
 		    next
-		    if cmines = cflags then
+		    if cmines > 0 and cmines = cflags then
 		      g.ForeColor = Color.White
 		      g.FillOval(2,(i-0.5)*ysquareSize,5,5)
+		      g.FillOval(cols*xsquareSize+3,(i-0.5)*ysquareSize,5,5)
 		    end
 		  next
 		  
