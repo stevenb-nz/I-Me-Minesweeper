@@ -33,7 +33,7 @@ Begin Window settingsDialog
       Cancel          =   False
       Caption         =   "OK"
       Default         =   True
-      Enabled         =   True
+      Enabled         =   False
       Height          =   20
       HelpTag         =   ""
       Index           =   -2147483648
@@ -356,6 +356,18 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Method, Flags = &h0
+		Sub setOkay()
+		  if mainWindow.cols = self.cols and mainWindow.rows = self.rows and mainWindow.emptiesToMines = self.emptiesToMines and mainWindow.minesToEmpties = self.minesToEmpties then
+		    okayButton.Enabled = false
+		  else
+		    okayButton.Enabled = True
+		  end
+		  
+		End Sub
+	#tag EndMethod
+
+
 	#tag Property, Flags = &h0
 		cols As Integer
 	#tag EndProperty
@@ -402,6 +414,7 @@ End
 		Sub Action(index as Integer)
 		  minesToEmpties = 2
 		  emptiesToMines = (index*3)+6
+		  setOkay
 		  
 		End Sub
 	#tag EndEvent
@@ -411,6 +424,7 @@ End
 		Sub ValueChanged()
 		  self.cols = me.Value
 		  colsLabel.Text = str(me.Value)+" cells across"
+		  setOkay
 		  
 		End Sub
 	#tag EndEvent
@@ -420,6 +434,7 @@ End
 		Sub ValueChanged()
 		  self.rows = me.Value
 		  rowsLabel.Text = str(me.Value)+" cells down"
+		  setOkay
 		  
 		End Sub
 	#tag EndEvent
