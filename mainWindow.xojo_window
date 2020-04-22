@@ -230,6 +230,39 @@ Begin Window mainWindow
       Visible         =   True
       Width           =   80
    End
+   Begin CheckBox countsCheckBox
+      AutoDeactivate  =   True
+      Bold            =   False
+      Caption         =   "Counts"
+      DataField       =   ""
+      DataSource      =   ""
+      Enabled         =   True
+      Height          =   20
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Italic          =   False
+      Left            =   850
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      State           =   0
+      TabIndex        =   6
+      TabPanelIndex   =   0
+      TabStop         =   True
+      TextFont        =   "System"
+      TextSize        =   0.0
+      TextUnit        =   0
+      Top             =   148
+      Transparent     =   False
+      Underline       =   False
+      Value           =   False
+      Visible         =   True
+      Width           =   80
+   End
 End
 #tag EndWindow
 
@@ -366,7 +399,9 @@ End
 		      end
 		    next
 		  next
-		  flagCheck(g)
+		  if countsCheckBox.State = CheckBox.CheckedStates.Checked then
+		    flagCheck(g)
+		  end
 		  
 		End Sub
 	#tag EndEvent
@@ -631,6 +666,14 @@ End
 		    newSettings
 		    refresh
 		  end
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events countsCheckBox
+	#tag Event
+		Sub Action()
+		  refresh
 		  
 		End Sub
 	#tag EndEvent
