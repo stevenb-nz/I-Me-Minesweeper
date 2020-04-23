@@ -400,7 +400,8 @@ End
 		    next
 		  next
 		  if countsCheckBox.State = CheckBox.CheckedStates.Checked then
-		    flagCheck(g)
+		    mineCheck(g)
+		    'flagCheck(g)
 		  end
 		  
 		End Sub
@@ -452,6 +453,48 @@ End
 
 	#tag Method, Flags = &h0
 		Sub flagCheck(g as graphics)
+		  dim cflags,cmines,i,j as integer
+		  
+		  for i = 1 to cols
+		    cmines = 0
+		    cflags = 0
+		    for j = 1 to rows
+		      if mineField(i,j).flagged then
+		        cflags = cflags + 1
+		      end
+		      if mineField(i,j).mine then
+		        cmines = cmines + 1
+		      end
+		    next
+		    if cmines > 0 and cmines = cflags then
+		      g.ForeColor = Color.White
+		      g.FillOval((i-0.5)*xsquareSize,2,5,5)
+		      g.FillOval((i-0.5)*xsquareSize,rows*ysquareSize+3,5,5)
+		    end
+		  next
+		  for i = 1 to rows
+		    cmines = 0
+		    cflags = 0
+		    for j = 1 to cols
+		      if mineField(j,i).flagged then
+		        cflags = cflags + 1
+		      end
+		      if mineField(j,i).mine then
+		        cmines = cmines + 1
+		      end
+		    next
+		    if cmines > 0 and cmines = cflags then
+		      g.ForeColor = Color.White
+		      g.FillOval(2,(i-0.5)*ysquareSize,5,5)
+		      g.FillOval(cols*xsquareSize+3,(i-0.5)*ysquareSize,5,5)
+		    end
+		  next
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub mineCheck(g as graphics)
 		  dim cflags,cmines,i,j as integer
 		  
 		  for i = 1 to cols
