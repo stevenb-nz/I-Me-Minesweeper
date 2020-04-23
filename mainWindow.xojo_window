@@ -499,8 +499,8 @@ End
 		  
 		  for i = 1 to cols
 		    cmines = 0
-		    for j = 1 to 3
-		      if mineField(i,j).mine then
+		    for j = -1 to 1
+		      if mineField(i+j,1).mine then
 		        cmines = cmines + 1
 		      end
 		    next
@@ -515,8 +515,8 @@ End
 		      
 		    end
 		    cmines = 0
-		    for j = 1 to 3
-		      if mineField(i,j).mine then
+		    for j = -1 to 1
+		      if mineField(i+j,rows).mine then
 		        cmines = cmines + 1
 		      end
 		    next
@@ -533,8 +533,8 @@ End
 		  next
 		  for i = 1 to rows
 		    cmines = 0
-		    for j = 1 to 3
-		      if mineField(j,i).mine then
+		    for j = -1 to 1
+		      if mineField(1,i+j).mine then
 		        cmines = cmines + 1
 		      end
 		    next
@@ -549,8 +549,8 @@ End
 		      
 		    end
 		    cmines = 0
-		    for j = 1 to 3
-		      if mineField(j,i).mine then
+		    for j = -1 to 1
+		      if mineField(cols,i+j).mine then
 		        cmines = cmines + 1
 		      end
 		    next
