@@ -401,7 +401,6 @@ End
 		  next
 		  if countsCheckBox.State = CheckBox.CheckedStates.Checked then
 		    mineCheck(g)
-		    'flagCheck(g)
 		  end
 		  
 		End Sub
@@ -452,48 +451,6 @@ End
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Sub flagCheck(g as graphics)
-		  dim cflags,cmines,i,j as integer
-		  
-		  for i = 1 to cols
-		    cmines = 0
-		    cflags = 0
-		    for j = 1 to rows
-		      if mineField(i,j).flagged then
-		        cflags = cflags + 1
-		      end
-		      if mineField(i,j).mine then
-		        cmines = cmines + 1
-		      end
-		    next
-		    if cmines > 0 and cmines = cflags then
-		      g.ForeColor = Color.White
-		      g.FillOval((i-0.5)*xsquareSize,2,5,5)
-		      g.FillOval((i-0.5)*xsquareSize,rows*ysquareSize+3,5,5)
-		    end
-		  next
-		  for i = 1 to rows
-		    cmines = 0
-		    cflags = 0
-		    for j = 1 to cols
-		      if mineField(j,i).flagged then
-		        cflags = cflags + 1
-		      end
-		      if mineField(j,i).mine then
-		        cmines = cmines + 1
-		      end
-		    next
-		    if cmines > 0 and cmines = cflags then
-		      g.ForeColor = Color.White
-		      g.FillOval(2,(i-0.5)*ysquareSize,5,5)
-		      g.FillOval(cols*xsquareSize+3,(i-0.5)*ysquareSize,5,5)
-		    end
-		  next
-		  
-		End Sub
-	#tag EndMethod
-
-	#tag Method, Flags = &h0
 		Sub mineCheck(g as graphics)
 		  dim cmines,i,j as integer
 		  
@@ -506,13 +463,19 @@ End
 		    next
 		    select case cmines
 		    case 0
-		      
+		      '
 		    case 1
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval((i-0.5)*xsquareSize+2,2,5,5)
 		    case 2
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval((i-0.5)*xsquareSize-1,2,5,5)
+		      g.FillOval((i-0.5)*xsquareSize+5,2,5,5)
 		    case 3
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval((i-0.5)*xsquareSize-4,2,5,5)
+		      g.FillOval((i-0.5)*xsquareSize+2,2,5,5)
+		      g.FillOval((i-0.5)*xsquareSize+8,2,5,5)
 		    end
 		    cmines = 0
 		    for j = -1 to 1
@@ -522,13 +485,19 @@ End
 		    next
 		    select case cmines
 		    case 0
-		      
+		      '
 		    case 1
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval((i-0.5)*xsquareSize+2,rows*ysquareSize+3,5,5)
 		    case 2
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval((i-0.5)*xsquareSize-1,rows*ysquareSize+3,5,5)
+		      g.FillOval((i-0.5)*xsquareSize+5,rows*ysquareSize+3,5,5)
 		    case 3
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval((i-0.5)*xsquareSize-4,rows*ysquareSize+3,5,5)
+		      g.FillOval((i-0.5)*xsquareSize+2,rows*ysquareSize+3,5,5)
+		      g.FillOval((i-0.5)*xsquareSize+8,rows*ysquareSize+3,5,5)
 		    end
 		  next
 		  for i = 1 to rows
@@ -540,13 +509,19 @@ End
 		    next
 		    select case cmines
 		    case 0
-		      
+		      '
 		    case 1
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval(2,(i-0.5)*ysquareSize+2,5,5)
 		    case 2
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval(2,(i-0.5)*ysquareSize-1,5,5)
+		      g.FillOval(2,(i-0.5)*ysquareSize+5,5,5)
 		    case 3
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval(2,(i-0.5)*ysquareSize-4,5,5)
+		      g.FillOval(2,(i-0.5)*ysquareSize+2,5,5)
+		      g.FillOval(2,(i-0.5)*ysquareSize+8,5,5)
 		    end
 		    cmines = 0
 		    for j = -1 to 1
@@ -556,13 +531,19 @@ End
 		    next
 		    select case cmines
 		    case 0
-		      
+		      '
 		    case 1
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval(cols*xsquareSize+3,(i-0.5)*ysquareSize+2,5,5)
 		    case 2
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval(cols*xsquareSize+3,(i-0.5)*ysquareSize-1,5,5)
+		      g.FillOval(cols*xsquareSize+3,(i-0.5)*ysquareSize+5,5,5)
 		    case 3
-		      
+		      g.ForeColor = Color.White
+		      g.FillOval(cols*xsquareSize+3,(i-0.5)*ysquareSize-3,5,5)
+		      g.FillOval(cols*xsquareSize+3,(i-0.5)*ysquareSize+2,5,5)
+		      g.FillOval(cols*xsquareSize+3,(i-0.5)*ysquareSize+8,5,5)
 		    end
 		  next
 		  
@@ -713,6 +694,7 @@ End
 		    for j=1 to rows
 		      mineField(i,j).cleared = false
 		      mineField(i,j).flagged = false
+		      mineField(i,j).mine = false
 		    next
 		  next
 		  cleared = 0
