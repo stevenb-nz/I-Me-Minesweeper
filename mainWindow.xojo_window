@@ -495,40 +495,74 @@ End
 
 	#tag Method, Flags = &h0
 		Sub mineCheck(g as graphics)
-		  dim cflags,cmines,i,j as integer
+		  dim cmines,i,j as integer
 		  
 		  for i = 1 to cols
 		    cmines = 0
-		    cflags = 0
-		    for j = 1 to rows
-		      if mineField(i,j).flagged then
-		        cflags = cflags + 1
-		      end
+		    for j = 1 to 3
 		      if mineField(i,j).mine then
 		        cmines = cmines + 1
 		      end
 		    next
-		    if cmines > 0 and cmines = cflags then
-		      g.ForeColor = Color.White
-		      g.FillOval((i-0.5)*xsquareSize,2,5,5)
-		      g.FillOval((i-0.5)*xsquareSize,rows*ysquareSize+3,5,5)
+		    select case cmines
+		    case 0
+		      
+		    case 1
+		      
+		    case 2
+		      
+		    case 3
+		      
+		    end
+		    cmines = 0
+		    for j = 1 to 3
+		      if mineField(i,j).mine then
+		        cmines = cmines + 1
+		      end
+		    next
+		    select case cmines
+		    case 0
+		      
+		    case 1
+		      
+		    case 2
+		      
+		    case 3
+		      
 		    end
 		  next
 		  for i = 1 to rows
 		    cmines = 0
-		    cflags = 0
-		    for j = 1 to cols
-		      if mineField(j,i).flagged then
-		        cflags = cflags + 1
-		      end
+		    for j = 1 to 3
 		      if mineField(j,i).mine then
 		        cmines = cmines + 1
 		      end
 		    next
-		    if cmines > 0 and cmines = cflags then
-		      g.ForeColor = Color.White
-		      g.FillOval(2,(i-0.5)*ysquareSize,5,5)
-		      g.FillOval(cols*xsquareSize+3,(i-0.5)*ysquareSize,5,5)
+		    select case cmines
+		    case 0
+		      
+		    case 1
+		      
+		    case 2
+		      
+		    case 3
+		      
+		    end
+		    cmines = 0
+		    for j = 1 to 3
+		      if mineField(j,i).mine then
+		        cmines = cmines + 1
+		      end
+		    next
+		    select case cmines
+		    case 0
+		      
+		    case 1
+		      
+		    case 2
+		      
+		    case 3
+		      
 		    end
 		  next
 		  
