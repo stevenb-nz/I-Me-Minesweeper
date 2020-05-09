@@ -351,6 +351,18 @@ End
 		  
 		  g.PenWidth = 10
 		  g.PenHeight = 10
+		  
+		  select case gameStateLabel.text
+		  case "On!"
+		    g.ForeColor = color.LightGray
+		  case "Won!"
+		    g.ForeColor = color.Yellow
+		  case "Lost!"
+		    g.ForeColor = color.Purple
+		  else
+		    g.ForeColor = color.DarkGray
+		  end
+		  
 		  g.DrawRect(0,0,xlimit,ylimit)
 		  for i = 1 to cols
 		    g.DrawLine(i*xsquareSize,0,i*xsquareSize,ylimit-10)
