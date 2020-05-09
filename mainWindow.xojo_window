@@ -401,6 +401,7 @@ End
 		  next
 		  if countsCheckBox.State = CheckBox.CheckedStates.Checked then
 		    mineCheck(g)
+		    countsCheckBox.State = CheckBox.CheckedStates.Unchecked
 		  end
 		  
 		End Sub
