@@ -631,6 +631,7 @@ End
 		      mineField(i,j) = new Cell
 		    next
 		  next
+		  gameStateLabel.Text = ""
 		  
 		End Sub
 	#tag EndMethod
