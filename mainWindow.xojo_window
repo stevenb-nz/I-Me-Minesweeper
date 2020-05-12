@@ -355,8 +355,6 @@ End
 		  select case gameStateLabel.text
 		  case "On!"
 		    g.ForeColor = color.LightGray
-		  case "Won!"
-		    g.ForeColor = color.Yellow
 		  case "Lost!"
 		    g.ForeColor = color.Purple
 		  else
