@@ -325,12 +325,24 @@ End
 
 	#tag Event
 		Sub Open()
+		  dim f as FolderItem
+		  dim t as TextInputStream
+		  dim s as string
+		  
 		  clearColor = Color.Green
 		  clearColor = HSV(clearColor.Hue,clearColor.Saturation,clearColor.Value*0.8)
 		  flagColor = Color.Orange
 		  flagColor = HSV(flagColor.Hue,flagColor.Saturation,flagColor.Value*0.8)
 		  
-		  'get settings from DB
+		  f = SpecialFolder.Preferences.Child("IMM Prefs")
+		  t = TextInputStream.Open(f)
+		  if t <> nil then
+		    cols = val(t.readline)
+		    rows = val(t.readline)
+		    emptiesToMines = val(t.readline)
+		    minesToEmpties = val(t.readline)
+		    t.Close
+		  end
 		  
 		  newSettings
 		  
