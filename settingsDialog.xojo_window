@@ -436,6 +436,18 @@ End
 #tag Events okayButton
 	#tag Event
 		Sub Action()
+		  dim f as FolderItem
+		  dim t as TextOutputStream
+		  dim s as string
+		  
+		  f = SpecialFolder.Preferences.Child("IMM Prefs")
+		  t = TextOutputStream.Create(f)
+		  t.WriteLine str(self.cols)
+		  t.WriteLine str(self.rows)
+		  t.WriteLine str(self.emptiesToMines)
+		  t.WriteLine str(self.minesToEmpties)
+		  t.Close
+		  
 		  mainWindow.cols = self.cols
 		  mainWindow.rows = self.rows
 		  mainWindow.emptiesToMines = self.emptiesToMines
