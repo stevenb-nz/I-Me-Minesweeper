@@ -277,7 +277,7 @@ Begin Window settingsDialog
       Transparent     =   False
       Value           =   15
       Visible         =   True
-      Width           =   172
+      Width           =   147
    End
    Begin Slider rowsSlider
       AutoDeactivate  =   True
@@ -306,7 +306,7 @@ Begin Window settingsDialog
       Transparent     =   False
       Value           =   15
       Visible         =   True
-      Width           =   172
+      Width           =   147
    End
    Begin Separator Separator1
       AutoDeactivate  =   True
@@ -351,6 +351,52 @@ Begin Window settingsDialog
       Transparent     =   False
       Visible         =   True
       Width           =   64
+   End
+   Begin UpDownArrows acrossUpDownArrows
+      AcceptFocus     =   False
+      AutoDeactivate  =   True
+      Enabled         =   True
+      Height          =   23
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   179
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   13
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Top             =   53
+      Transparent     =   False
+      Visible         =   True
+      Width           =   13
+   End
+   Begin UpDownArrows downUpDownArrows
+      AcceptFocus     =   False
+      AutoDeactivate  =   True
+      Enabled         =   True
+      Height          =   23
+      HelpTag         =   ""
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   179
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      Scope           =   0
+      TabIndex        =   14
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Top             =   120
+      Transparent     =   False
+      Visible         =   True
+      Width           =   13
    End
 End
 #tag EndWindow
