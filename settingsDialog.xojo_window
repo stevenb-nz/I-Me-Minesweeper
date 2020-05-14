@@ -352,7 +352,7 @@ Begin Window settingsDialog
       Visible         =   True
       Width           =   64
    End
-   Begin UpDownArrows acrossUpDownArrows
+   Begin UpDownArrows colsUpDownArrows
       AcceptFocus     =   False
       AutoDeactivate  =   True
       Enabled         =   True
@@ -375,7 +375,7 @@ Begin Window settingsDialog
       Visible         =   True
       Width           =   13
    End
-   Begin UpDownArrows downUpDownArrows
+   Begin UpDownArrows rowsUpDownArrows
       AcceptFocus     =   False
       AutoDeactivate  =   True
       Enabled         =   True
@@ -481,6 +481,34 @@ End
 		  self.rows = me.Value
 		  rowsLabel.Text = str(me.Value)+" cells down"
 		  setOkay
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events colsUpDownArrows
+	#tag Event
+		Sub Up()
+		  colsSlider.Value = colsSlider.Value + if(colsSlider.Value < 25,1,0)
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Down()
+		  colsSlider.Value = colsSlider.Value - if(colsSlider.Value > 10,1,0)
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events rowsUpDownArrows
+	#tag Event
+		Sub Up()
+		  rowsSlider.Value = rowsSlider.Value + if(rowsSlider.Value < 25,1,0)
+		  
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Down()
+		  rowsSlider.Value = rowsSlider.Value - if(rowsSlider.Value > 10,1,0)
 		  
 		End Sub
 	#tag EndEvent
