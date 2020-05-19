@@ -698,7 +698,15 @@ End
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		xlineSize As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		xsquareSize As Integer
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		ylineSize As Integer
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
