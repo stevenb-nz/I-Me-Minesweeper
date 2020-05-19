@@ -335,8 +335,8 @@ End
 		  flagColor = HSV(flagColor.Hue,flagColor.Saturation,flagColor.Value*0.8)
 		  
 		  f = SpecialFolder.Preferences.Child("IMM Prefs")
-		  t = TextInputStream.Open(f)
-		  if t <> nil then
+		  if f.exists then
+		    t = TextInputStream.Open(f)
 		    cols = val(t.readline)
 		    rows = val(t.readline)
 		    emptiesToMines = val(t.readline)
