@@ -390,7 +390,7 @@ End
 		    for j = 1 to rows
 		      if mineField(i,j).cleared then
 		        g.ForeColor = Color.Green
-		        points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
+		        points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize),i*xsquareSize+(10-xlineSize),j*ysquareSize+(10-ylineSize))
 		        g.FillPolygon(points)
 		        if mineField(i,j).neighbours > 0 then
 		          g.ForeColor = Color.Black
@@ -403,24 +403,24 @@ End
 		        if mineField(i,j).flagged then
 		          if activeGame or mineField(i,j).mine then
 		            g.ForeColor = Color.Orange
-		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
+		            points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize),i*xsquareSize+(10-xlineSize),j*ysquareSize+(10-ylineSize))
 		            g.FillPolygon(points)
 		          else
 		            g.ForeColor = Color.Brown
-		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
+		            points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize),i*xsquareSize+(10-xlineSize),j*ysquareSize+(10-ylineSize))
 		            g.FillPolygon(points)
 		          end
 		        else
 		          if activeGame or not mineField(i,j).mine then
 		            g.ForeColor = flagColor
-		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize)
+		            points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize))
 		            g.FillPolygon(points)
 		            g.ForeColor = clearColor
-		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,i*xsquareSize,j*ysquareSize,(i-1)*xsquareSize+10,j*ysquareSize )
+		            points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,i*xsquareSize+(10-xlineSize),j*ysquareSize+(10-ylineSize),(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize))
 		            g.FillPolygon(points)
 		          else
 		            g.ForeColor = Color.Red
-		            points = Array(0.0,i*xsquareSize,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize,i*xsquareSize,j*ysquareSize)
+		            points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize),i*xsquareSize+(10-xlineSize),j*ysquareSize+(10-ylineSize))
 		            g.FillPolygon(points)
 		          end
 		        end
