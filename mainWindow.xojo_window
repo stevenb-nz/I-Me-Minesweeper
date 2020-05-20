@@ -375,13 +375,17 @@ End
 		  g.DrawRect(0,0,xlimit,ylimit)
 		  
 		  g.PenWidth = xlineSize
-		  g.PenHeight = ylineSize
+		  g.PenHeight = xlineSize
 		  for i = 1 to cols-1
-		    g.DrawLine(i*xsquareSize,0,i*xsquareSize,ylimit-10)
+		    g.DrawLine(i*xsquareSize+(10-xlinesize),0,i*xsquareSize+(10-xlinesize),ylimit-10)
 		  next
+		  g.PenWidth = ylineSize
+		  g.PenHeight = ylineSize
 		  for j = 1 to rows-1
-		    g.DrawLine(0,j*ysquareSize,xlimit-10,j*ysquareSize)
+		    g.DrawLine(0,j*ysquareSize+(10-ylinesize),xlimit-10,j*ysquareSize+(10-ylinesize))
 		  next
+		  g.PenWidth = 1
+		  g.PenHeight = 1
 		  for i = 1 to cols
 		    for j = 1 to rows
 		      if mineField(i,j).cleared then
