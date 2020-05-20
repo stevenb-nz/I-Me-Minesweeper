@@ -630,8 +630,11 @@ End
 		  minesLabel.Text = "0 Mines"
 		  flagsLabel.Text = "0 Flags"
 		  
-		  xsquareSize = floor((self.height-10)/cols)
-		  ysquareSize = floor((self.height-10)/rows)
+		  xlineSize = Ceil(100/cols)
+		  ylineSize = Ceil(100/rows)
+		  
+		  xsquareSize = floor((self.height-(10+xlineSize))/cols)
+		  ysquareSize = floor((self.height-(10+ylineSize))/rows)
 		  
 		  cp1 = cols+1
 		  rp1 = rows+1
@@ -1065,5 +1068,15 @@ End
 		Name="settingsChanged"
 		Group="Behavior"
 		Type="Boolean"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="xlineSize"
+		Group="Behavior"
+		Type="Integer"
+	#tag EndViewProperty
+	#tag ViewProperty
+		Name="ylineSize"
+		Group="Behavior"
+		Type="Integer"
 	#tag EndViewProperty
 #tag EndViewBehavior
