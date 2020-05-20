@@ -357,12 +357,9 @@ End
 		  dim points() As Double
 		  dim ps As String
 		  
-		  xlimit = xsquareSize*cols+10
-		  ylimit = ysquareSize*rows+10
+		  xlimit = xsquareSize*cols+(20-xlineSize)
+		  ylimit = ysquareSize*rows+(20-ylineSize)
 		  fontSize = (ysquareSize-10)/11*9
-		  
-		  g.PenWidth = 10
-		  g.PenHeight = 10
 		  
 		  select case gameStateLabel.text
 		  case "On!"
@@ -373,11 +370,16 @@ End
 		    g.ForeColor = color.DarkGray
 		  end
 		  
+		  g.PenWidth = 10
+		  g.PenHeight = 10
 		  g.DrawRect(0,0,xlimit,ylimit)
-		  for i = 1 to cols
+		  
+		  g.PenWidth = xlineSize
+		  g.PenHeight = ylineSize
+		  for i = 1 to cols-1
 		    g.DrawLine(i*xsquareSize,0,i*xsquareSize,ylimit-10)
 		  next
-		  for j = 1 to rows
+		  for j = 1 to rows-1
 		    g.DrawLine(0,j*ysquareSize,xlimit-10,j*ysquareSize)
 		  next
 		  for i = 1 to cols
