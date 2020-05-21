@@ -275,8 +275,8 @@ End
 		  if activeGame then
 		    goodClick = true
 		    
-		    x2 = x - (10-xlineSize)
-		    y2 = y - (10-ylineSize)
+		    x2 = x - (11-xlineSize)
+		    y2 = y - (11-ylineSize)
 		    clickCellX = x2\xsquareSize
 		    clickCellY = y2\ysquareSize
 		    clickInCellX = x2 mod xsquareSize
