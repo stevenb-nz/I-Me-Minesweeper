@@ -270,22 +270,24 @@ End
 	#tag Event
 		Function MouseDown(X As Integer, Y As Integer) As Boolean
 		  dim goodClick as boolean
-		  dim clickCellX,clickCellY,clickInCellX,clickInCellY as integer
+		  dim clickCellX,clickCellY,clickInCellX,clickInCellY,x2,y2 as integer
 		  
 		  if activeGame then
 		    goodClick = true
 		    
-		    clickCellX = x\xsquareSize
-		    clickCellY = y\ysquareSize
-		    clickInCellX = x mod xsquareSize
-		    clickInCellY = y mod ysquareSize
-		    if x < 10 or y < 10 then
+		    x2 = x - (10-xlineSize)
+		    y2 = y - (10-ylineSize)
+		    clickCellX = x2\xsquareSize
+		    clickCellY = y2\ysquareSize
+		    clickInCellX = x2 mod xsquareSize
+		    clickInCellY = y2 mod ysquareSize
+		    if x2 < xlineSize or y2 < ylineSize then
 		      goodClick = false
 		    end
-		    if x > xsquareSize*cols or y > ysquareSize*rows then
+		    if x2 > xsquareSize*cols or y2 > ysquareSize*rows then
 		      goodClick = False
 		    end
-		    if clickInCellx < 10 or clickInCellY < 10 then
+		    if clickInCellx < xlineSize or clickInCellY < ylineSize then
 		      goodClick = False
 		    end
 		    if goodClick then
