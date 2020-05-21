@@ -281,6 +281,7 @@ End
 		    clickCellY = y2\ysquareSize
 		    clickInCellX = x2 mod xsquareSize
 		    clickInCellY = y2 mod ysquareSize
+		    
 		    if x2 < xlineSize or y2 < ylineSize then
 		      goodClick = false
 		    end
@@ -301,7 +302,7 @@ End
 		        flagged = flagged - 1
 		        flagsLabel.text = str(flagged)+if(flagged=1," Flag"," Flags")
 		      else
-		        if (clickInCellx-10)/(xsquareSize-10)+(clickInCelly-10)/(ysquareSize-10) < 1 then
+		        if (clickInCellx-xlineSize)/(xsquareSize-xlineSize)+(clickInCelly-ylineSize)/(ysquareSize-ylineSize) < 1 then
 		          mineField(clickCellX+1,clickCellY+1).flagged = true
 		          flagged = flagged + 1
 		          flagsLabel.text = str(flagged)+if(flagged=1," Flag"," Flags")
@@ -377,12 +378,12 @@ End
 		  g.DrawRect(0,0,xlimit,ylimit)
 		  
 		  g.PenWidth = xlineSize
-		  g.PenHeight = xlineSize
+		  g.PenHeight = 1
 		  for i = 1 to cols-1
 		    g.DrawLine(i*xsquareSize+(10-xlinesize),0,i*xsquareSize+(10-xlinesize),ylimit-10)
 		  next
 		  g.PenWidth = ylineSize
-		  g.PenHeight = ylineSize
+		  g.PenHeight = 1
 		  for j = 1 to rows-1
 		    g.DrawLine(0,j*ysquareSize+(10-ylinesize),xlimit-10,j*ysquareSize+(10-ylinesize))
 		  next
