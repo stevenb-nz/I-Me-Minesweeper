@@ -334,7 +334,9 @@ End
 		  
 		  clearColor = Color.Green
 		  clearColor = HSV(clearColor.Hue,clearColor.Saturation,clearColor.Value*0.8)
+		  unflagColor = Color.Red
 		  flagColor = Color.Orange
+		  unflagColor = HSV((unflagColor.Hue+2*flagColor.Hue)/3,unflagColor.Saturation,unflagColor.Value)
 		  flagColor = HSV(flagColor.Hue,flagColor.Saturation,flagColor.Value*0.8)
 		  
 		  f = SpecialFolder.Preferences.Child("IMM Prefs")
@@ -406,13 +408,11 @@ End
 		        if mineField(i,j).flagged then
 		          if activeGame or mineField(i,j).mine then
 		            g.ForeColor = Color.Orange
-		            points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize),i*xsquareSize+(10-xlineSize),j*ysquareSize+(10-ylineSize))
-		            g.FillPolygon(points)
 		          else
 		            g.ForeColor = Color.Brown
-		            points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize),i*xsquareSize+(10-xlineSize),j*ysquareSize+(10-ylineSize))
-		            g.FillPolygon(points)
 		          end
+		          points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize),i*xsquareSize+(10-xlineSize),j*ysquareSize+(10-ylineSize))
+		          g.FillPolygon(points)
 		        else
 		          if activeGame or not mineField(i,j).mine then
 		            g.ForeColor = flagColor
@@ -422,7 +422,11 @@ End
 		            points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,i*xsquareSize+(10-xlineSize),j*ysquareSize+(10-ylineSize),(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize))
 		            g.FillPolygon(points)
 		          else
-		            g.ForeColor = Color.Red
+		            if gameStateLabel.text = "Lost!" then
+		              g.ForeColor = Color.Red
+		            else
+		              g.ForeColor = unflagColor
+		            end
 		            points = Array(0.0,i*xsquareSize+(10-xlineSize),(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,(j-1)*ysquareSize+10,(i-1)*xsquareSize+10,j*ysquareSize+(10-ylineSize),i*xsquareSize+(10-xlineSize),j*ysquareSize+(10-ylineSize))
 		            g.FillPolygon(points)
 		          end
@@ -707,6 +711,10 @@ End
 
 	#tag Property, Flags = &h0
 		settingsChanged As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
+		unflagColor As Color
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
